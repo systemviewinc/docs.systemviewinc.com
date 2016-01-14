@@ -17,6 +17,8 @@
 ![](Screen Shot 2016-01-13 at 11.04.39 PM.png)
 * The "Software execution context" is defined with ARM
 * The "Hardware execution context" is defined with zynq
+* The execution contexts represent "logical" execution environments. Executable code can be added each contexts. 
+* The next step we will create an example system to "sort" 1024 integers.
 
 
 
