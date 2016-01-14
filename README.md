@@ -1,2 +1,1 @@
-# Introduction
-Visual System Integrator
+# Visual System Integrator
