@@ -1,8 +1,20 @@
 # Creating the Sort Demo
 
-* After importing the platform the System canvas should have two execution contexts
-![](../Screen Shot 2016-01-13 at 11.04.39 PM.png)
-* ARM - is the software execution context & Zynq is the Hardware execution context
-* Add the TCP Server software IP block to the Software Context from the IP catalog
+* Import C/C++ code into VSI system Canvas
+ (Using sort.cc which is can be found at $VSI_INSTALL/target/common/sort)
+ ![sort_6 image](/img/Sort_demo_5.gif)
 
-![](../Screen Shot 2016-01-13 at 11.28.41 PM.png)
+* Add the TCP Server software IP block to the Software Context from IP Library
+ ![sort_7 image](/img/Sort_demo_6.gif)
+
+* At this point you have a complete software project to perform sort in software
+ ![sort_8 image](/img/Sort_demo_7.gif)
+
+* Next we move the sort block from software to hardware 
+ ![sort_9 image](/img/Sort_demo_8.gif)
+
+* Generate the complete software , hardware & HLS projects
+ ![sort_10 image](/img/Sort_demo_9.gif)
+ 
+* Use HLS to convert sort function to verilog
+ ![sort_11 image](/img/Sort_demo_10.gif)
