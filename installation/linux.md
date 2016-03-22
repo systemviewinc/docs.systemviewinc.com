@@ -15,4 +15,4 @@ Visual System Integrator installation is done by extracting the tarball on a hos
 4. Copy vsi.lic license file to the $VSI_INSTALL directory.
 
 
-![install iamge](/img/linux_install.gif)
+<img src="/img/linux_install.gif" width="100%">
