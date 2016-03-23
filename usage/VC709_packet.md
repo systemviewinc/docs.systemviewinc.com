@@ -2,32 +2,32 @@
 
 * Import packet matching engine to the FPGA (vc709) context.
   Source found in $(VSI_INSTALL)/target/common/hls_examples/regex_packet/match/regex_exec.cc
- ![vc709_6 image](/img/vc709_regex_5.gif)
+ <img src="/img/vc709_regex_5.gif" alt="vc709_6 image" width="100%">
 
 * Import Match Compiler to the Software (X86) context.
   Source found in $(VSI_INSTALL)/target/common/hls_exmples/regex_packet/compile/regex_comp.cc
- ![vc709_7 image](/img/vc709_regex_6.gif)
+ <img src="/img/vc709_regex_6.gif" alt="vc709_7 image" width="100%">
 
 
 * Add a TCP server to Softwar (X86) Context that will feed the pattern to be compiled
   and sent the matching engine. Set the server port to 2020
- ![vc709_8 image](/img/vc709_regex_7.gif)
+ <img src="/img/vc709_regex_7.gif" alt="vc709_8 image" width="100%">
 
 * Add another TCP server in X86 that will send the packets to the line and recive matched
   packets back. Set the server port to 2021
- ![vc709_9 image](/img/vc709_regex_8.gif)
+ <img src="/img/vc709_regex_8.gif" alt="vc709_9 image" width="100%">
 
 * Annotate connections to be traced
- ![vc709_10 image](/img/vc709_regex_9.gif)
+ <img src="/img/vc709_regex_9.gif" alt="vc709_10 image" width="100%">
 
 * Generate the complete system & hardware
- ![vc709_11 image](/img/vc709_regex_10.gif)
+ <img src="/img/vc709_regex_10.gif" alt="vc709_11 image" width="100%">
 
 * Synthesize the pattern matching engine using Vivado HLS
- ![vc709_12 image](/img/vc709_regex_11.gif)
+ <img src="/img/vc709_regex_11.gif" alt="vc709_12 image" width="100%">
 
 * Compile the Software project
- ![vc709_13 image](/img/vc709_regex_12.gif)
+ <img src="/img/vc709_regex_12.gif" alt="vc709_13 image" width="100%">
 
 * Generate FPGA bitstream for the FPGA project
- ![vc709_14 image](/img/create_bitstream.gif)
+ <img src="/img/create_bitstream.gif" alt="vc709_14 image" width="100%">
