@@ -30,4 +30,4 @@
  ![vc709_13 image](/img/vc709_regex_12.gif)
 
 * Generate FPGA bitstream for the FPGA project
- ![vc709_14 image](/img/vc709_regex_13.gif)
+ ![vc709_14 image](/img/create_bitstream.gif)
