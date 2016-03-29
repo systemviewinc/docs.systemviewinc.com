@@ -10,3 +10,4 @@
 * [Usage - (VC709)](usage/README_vc709.md)
   * [Creating a VC709 Platform for packet processing](usage/VC709.md)
   * [Creating a Packet Processor](usage/VC709_packet.md)
+* [Usage - Logging](usage/logging.md)
