@@ -22,4 +22,5 @@
  <img src="/img/Sort_demo_4.gif" alt="sort_6 image" width="100%">
 
 * After importing the platform the System canvas should have two execution contexts
-* Zynq_ps - is the software execution context (Representing the ARM) & Zynq_pl is the Hardware execution context (Representing the FPGA Fabric)
+  	* Zynq_ps - is the software execution context (Representing the ARM) 
+	* Zynq_pl is the Hardware execution context (Representing the FPGA Fabric)
