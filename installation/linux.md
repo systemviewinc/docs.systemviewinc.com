@@ -6,6 +6,7 @@ Visual System Integrator installation is done by extracting the tarball on a hos
 
 1. Linux Host (Ubuntu 14.04 VM running in Virtualbox recommended)
 2. VSI Version of Vivado installed on host machine.
+3. cmake (install it using the package manager i.e apt-get or yum. Alternatively, download it from cmake.org)
 
 ## Steps
 

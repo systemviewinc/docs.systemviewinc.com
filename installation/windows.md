@@ -7,6 +7,7 @@ Visual System Integrator installation is done by extracting the tarball on a hos
 1. Windows 7 or above
 2. VSI Version of Vivado installed on host machine.
 3. gnu tar or a similar utility to extract tar.gz archives
+4. cmake (download it from cmake.org)
 
 ## Steps
 
