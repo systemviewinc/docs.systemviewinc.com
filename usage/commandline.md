@@ -1,4 +1,14 @@
-## Notable Command line options
+## Project build Commands
+
+
+ - vsi::build_projects:
+		Build generated software projects. Output is saved to build.log file
+
+ - vsi::clean_projects:
+		Cleans built projects.
+
+
+## Command line options
 
 
  - vsi::src_copy_files:
