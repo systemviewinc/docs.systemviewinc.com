@@ -12,3 +12,4 @@
   * [Creating a Packet Processor](usage/VC709_packet.md)
 * [Usage - Logging](usage/logging.md)
 * [Usage - Command Line](usage/commandline.md)
+* [Templates](templates/index.md)
