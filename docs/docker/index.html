@@ -336,7 +336,7 @@
 </li>
 <li>Optionally, increase the RAM used by docker to 8GB or more. This will ensure a smoother experience.
 </li></ol>
-<h4 id="pull-visual-system-integrator">Pull Visual System Integrator</h4><p>Run <code>docker pull gcr.io/systemviewinc/vsi:2016.4</code> and wait for the download to complete.</p><blockquote><p>Warning: This will download 50GB+ of data. Make sure that you are on a fast connection.</p></blockquote><h4 id="run-visual-system-integrator">Run Visual System Integrator</h4><ol><li><p>Run <code>docker run -dP -e 1900x1080 -v /home/{USER}/{some projects directory to map}:/projects gcr.io/systemviewinc/vsi:2016.4</code>
+<h4 id="pull-visual-system-integrator">Pull Visual System Integrator</h4><p>Run <code>docker pull gcr.io/systemviewinc/vsi:2016.4</code> and wait for the download to complete.</p><blockquote><p>Warning: This will download 50GB+ of data. Make sure that you are on a fast connection.</p></blockquote><h4 id="run-visual-system-integrator">Run Visual System Integrator</h4><ol><li><p>Run <code>docker run -dP -e 1920x1080 -v /home/{USER}/{some projects directory to map}:/projects gcr.io/systemviewinc/vsi:2016.4</code> (1920x1080 can be replaced with the native resolution of your display)
 This will start VSI in detached mode and print a hash for the container. You will need the hash for the next step.</p></li>
 <li><p>Run <code>docker port {hash from step 1}</code> and note down the port that is printed.</p></li>
 <li><p>Use a VNC client to connect to VSI. (For MacOS, run <code>Screen Sharing</code> application and use <code>localhost:{port from step 2}</code></p></li></ol>
@@ -346,7 +346,7 @@ This will start VSI in detached mode and print a hash for the container. You wil
 </li>
 <li>Once you receive the vsi.lic.{MAC Address} file, use <code>docker copy vsi.lic.{MAC Address} /opt/Systemview/VSI/2016.4/</code> to copy the file.
 </li>
-<li>You should now be able to run VSI and generate projects. Open a command pormp and run <code>vsi</code> to start Visual System Integrator. 
+<li>You should now be able to run VSI and generate projects. Open a command pormp and run <code>vsi</code> to start Visual System Integrator.
 </li></ol>
 
                                 
@@ -387,7 +387,7 @@ This will start VSI in detached mode and print a hash for the container. You wil
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.8","depth":1,"previous":{"title":"Templates","level":"1.7","depth":1,"path":"templates/index.md","ref":"templates/index.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload"],"styles":{"website":"style.css"},"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"docker/index.md","mtime":"2017-01-06T23:36:32.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-12-31T05:44:13.121Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.8","depth":1,"previous":{"title":"Templates","level":"1.7","depth":1,"path":"templates/index.md","ref":"templates/index.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"style.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"docker/index.md","mtime":"2017-01-06T23:46:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-12-31T05:51:17.311Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -395,10 +395,6 @@ This will start VSI in detached mode and print a hash for the container. You wil
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>

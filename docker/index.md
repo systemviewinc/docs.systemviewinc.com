@@ -44,7 +44,7 @@ Run `docker pull gcr.io/systemviewinc/vsi:2016.4` and wait for the download to c
 
 #### Run Visual System Integrator
 
-1. Run `docker run -dP -e 1900x1080 -v /home/{USER}/{some projects directory to map}:/projects gcr.io/systemviewinc/vsi:2016.4`
+1. Run `docker run -dP -e 1920x1080 -v /home/{USER}/{some projects directory to map}:/projects gcr.io/systemviewinc/vsi:2016.4` (1920x1080 can be replaced with the native resolution of your display)
 This will start VSI in detached mode and print a hash for the container. You will need the hash for the next step.
 
 2. Run `docker port {hash from step 1}` and note down the port that is printed.
@@ -55,4 +55,4 @@ This will start VSI in detached mode and print a hash for the container. You wil
 1. Open a command prompt inside the VSI container and use `ip address` to get the MAC Address.
 2. Send the MAC address to us along with the licensing request.
 3. Once you receive the vsi.lic.{MAC Address} file, use `docker copy vsi.lic.{MAC Address} /opt/Systemview/VSI/2016.4/` to copy the file.
-4. You should now be able to run VSI and generate projects. Open a command pormp and run `vsi` to start Visual System Integrator. 
+4. You should now be able to run VSI and generate projects. Open a command pormp and run `vsi` to start Visual System Integrator.
