@@ -55,4 +55,4 @@ This will start VSI in detached mode and print a hash for the container. You wil
 1. Open a command prompt inside the VSI container and use `ip address` to get the MAC Address.
 2. Send the MAC address to us along with the licensing request.
 3. Once you receive the vsi.lic.{MAC Address} file, use `docker copy vsi.lic.{MAC Address} /opt/Systemview/VSI/2016.4/` to copy the file.
-4. You should now be able to run VSI and generate projects.
+4. You should now be able to run VSI and generate projects. Open a command pormp and run `vsi` to start Visual System Integrator. 
