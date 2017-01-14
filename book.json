@@ -1,6 +1,12 @@
 {
-	"output": "/Users/nan/p/vsi_docs",
+	"output": "docs",
 	"styles": {
 		"website": "style.css"
+	},
+	"plugins": ["ga"],
+	"pluginsConfig": {
+		"ga": {
+			"token": "UA-90334039-2"
+		}
 	}
 }

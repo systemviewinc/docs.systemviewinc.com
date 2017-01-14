@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>Docker · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Docker · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -324,30 +324,51 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="what-is-docker">What is Docker</h3><p>Docker enables developers and IT admins to build, ship and run any application, anywhere.</p><p>Docker runtime is available for Windows, Linux and MacOS.</p><h2 id="visual-system-integrator-is-now-available-on-docker">Visual System Integrator is now available on Docker</h2><p>It is only a matter of <code>docker pull</code> and <code>docker run</code> to have a full functioning environment to run VSI.</p><h3 id="prerequisite">Prerequisite</h3><h4 id="install-docker">Install Docker</h4><p>Install docker runtime from <a href="https://docker.com" target="_blank">https://docker.com</a></p><p>Follow the instruction until you have docker daemon running then continue with the next step.</p><p>If you already have docker installed, then you can skip this step.</p><h4 id="resize-docker-disk-size-macos-only----may-apply-to-windows-as-well">Resize docker disk size (MacOS only -- may apply to windows as well)</h4><p>Due to the base installation size, you will need a larger disk file for your docker runtime. Typically docker creates a disk file of 50GB which is insufficient for our purpose</p><blockquote><p>Warning: This will destroy the docker local image cache as well as any pending changes inside any running or stopped containers. Save your work in any running or stopped containers to a persistent volume before continuing. If you have just installed docker than this does not apply to you.</p></blockquote><p>Docker ships with a qemu-img utility. We will use it to resize the image. If you have already used <code>docker pull</code> or <code>docker run</code>, be warned that we will have to recreate the disk which will destroy all images and containers.</p><ol><li>Run <code>rm ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2</code> (alternatively use <code>mv</code> to move the file elsewhere if you intend to restore it later)
+                                <h3 id="what-is-docker">What is Docker</h3>
+<p>Docker enables developers and IT admins to build, ship and run any application, anywhere.</p>
+<p>Docker runtime is available for Windows, Linux and MacOS.</p>
+<h2 id="visual-system-integrator-is-now-available-on-docker">Visual System Integrator is now available on Docker</h2>
+<p>It is only a matter of <code>docker pull</code> and <code>docker run</code> to have a full functioning environment to run VSI.</p>
+<h3 id="prerequisite">Prerequisite</h3>
+<h4 id="install-docker">Install Docker</h4>
+<p>Install docker runtime from <a href="https://docker.com" target="_blank">https://docker.com</a></p>
+<p>Follow the instruction until you have docker daemon running then continue with the next step.</p>
+<p>If you already have docker installed, then you can skip this step.</p>
+<h4 id="resize-docker-disk-size-macos-only----may-apply-to-windows-as-well">Resize docker disk size (MacOS only -- may apply to windows as well)</h4>
+<p>Due to the base installation size, you will need a larger disk file for your docker runtime. Typically docker creates a disk file of 50GB which is insufficient for our purpose</p>
+<blockquote>
+<p>Warning: This will destroy the docker local image cache as well as any pending changes inside any running or stopped containers. Save your work in any running or stopped containers to a persistent volume before continuing. If you have just installed docker than this does not apply to you.</p>
+</blockquote>
+<p>Docker ships with a qemu-img utility. We will use it to resize the image. If you have already used <code>docker pull</code> or <code>docker run</code>, be warned that we will have to recreate the disk which will destroy all images and containers.</p>
+<ol>
+<li>Run <code>rm ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2</code> (alternatively use <code>mv</code> to move the file elsewhere if you intend to restore it later)</li>
+<li>Restart docker</li>
+<li>Run <code>/Applications/Docker.app/Contents/MacOS/qemu-img resize ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2 100G</code></li>
+<li>Restart docker again.</li>
+<li>Once docker is running, run <code>docker run alpine df -h</code>. Verify that the <code>overlay</code> row has 99G or higher for size column.</li>
+<li>Optionally, increase the RAM used by docker to 8GB or more. This will ensure a smoother experience.</li>
+</ol>
+<h4 id="pull-visual-system-integrator">Pull Visual System Integrator</h4>
+<p>Run <code>docker pull gcr.io/systemviewinc/vsi:2016.4</code> and wait for the download to complete.</p>
+<blockquote>
+<p>Warning: This will download 50GB+ of data. Make sure that you are on a fast connection.</p>
+</blockquote>
+<h4 id="run-visual-system-integrator">Run Visual System Integrator</h4>
+<ol>
+<li><p>Run <code>docker run -dP -e 1920x1080 -v /home/{USER}/{some projects directory to map}:/projects gcr.io/systemviewinc/vsi:2016.4</code> (1920x1080 can be replaced with the native resolution of your display)
+This will start VSI in detached mode and print a hash for the container. You will need the hash for the next step.</p>
 </li>
-<li>Restart docker
+<li><p>Run <code>docker port {hash from step 1}</code> and note down the port that is printed.</p>
 </li>
-<li>Run <code>/Applications/Docker.app/Contents/MacOS/qemu-img resize ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2 100G</code>
-</li>
-<li>Restart docker again.
-</li>
-<li>Once docker is running, run <code>docker run alpine df -h</code>. Verify that the <code>overlay</code> row has 99G or higher for size column.
-</li>
-<li>Optionally, increase the RAM used by docker to 8GB or more. This will ensure a smoother experience.
-</li></ol>
-<h4 id="pull-visual-system-integrator">Pull Visual System Integrator</h4><p>Run <code>docker pull gcr.io/systemviewinc/vsi:2016.4</code> and wait for the download to complete.</p><blockquote><p>Warning: This will download 50GB+ of data. Make sure that you are on a fast connection.</p></blockquote><h4 id="run-visual-system-integrator">Run Visual System Integrator</h4><ol><li><p>Run <code>docker run -dP -e 1920x1080 -v /home/{USER}/{some projects directory to map}:/projects gcr.io/systemviewinc/vsi:2016.4</code> (1920x1080 can be replaced with the native resolution of your display)
-This will start VSI in detached mode and print a hash for the container. You will need the hash for the next step.</p></li>
-<li><p>Run <code>docker port {hash from step 1}</code> and note down the port that is printed.</p></li>
-<li><p>Use a VNC client to connect to VSI. (For MacOS, run <code>Screen Sharing</code> application and use <code>localhost:{port from step 2}</code></p></li></ol>
-<h4 id="licensing">Licensing</h4><ol><li>Open a command prompt inside the VSI container and use <code>ip address</code> to get the MAC Address.
-</li>
-<li>Send the MAC address to us along with the licensing request.
-</li>
-<li>Once you receive the vsi.lic.{MAC Address} file, use <code>docker copy vsi.lic.{MAC Address} /opt/Systemview/VSI/2016.4/</code> to copy the file.
-</li>
-<li>You should now be able to run VSI and generate projects. Open a command pormp and run <code>vsi</code> to start Visual System Integrator.
-</li></ol>
+<li>Use a VNC client to connect to VSI. (For MacOS, run <code>Screen Sharing</code> application and use <code>localhost:{port from step 2}</code></li>
+</ol>
+<h4 id="licensing">Licensing</h4>
+<ol>
+<li>Open a command prompt inside the VSI container and use <code>ip address</code> to get the MAC Address.</li>
+<li>Send the MAC address to us along with the licensing request.</li>
+<li>Once you receive the vsi.lic.{MAC Address} file, use <code>docker copy vsi.lic.{MAC Address} /opt/Systemview/VSI/2016.4/</code> to copy the file.</li>
+<li>You should now be able to run VSI and generate projects. Open a command pormp and run <code>vsi</code> to start Visual System Integrator.</li>
+</ol>
 
                                 
                                 </section>
@@ -387,7 +408,7 @@ This will start VSI in detached mode and print a hash for the container. You wil
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.8","depth":1,"previous":{"title":"Templates","level":"1.7","depth":1,"path":"templates/index.md","ref":"templates/index.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"style.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"docker/index.md","mtime":"2017-01-06T23:46:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-12-31T05:51:17.311Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.8","depth":1,"previous":{"title":"Templates","level":"1.7","depth":1,"path":"templates/index.md","ref":"templates/index.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"docker/index.md","mtime":"2017-01-14T01:55:46.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-14T02:03:55.934Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -395,6 +416,10 @@ This will start VSI in detached mode and print a hash for the container. You wil
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>

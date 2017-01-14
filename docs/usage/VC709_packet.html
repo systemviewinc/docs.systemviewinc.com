@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>Creating a Packet Processor · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Creating a Packet Processor · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -326,28 +326,42 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="creating-a-packet-processing-application-using-the-vc709virtex-platform">Creating a Packet Processing application using the VC709(Virtex) platform</h1><ul><li><p>Import packet matching engine to the FPGA (vc709) context.
+                                <h1 id="creating-a-packet-processing-application-using-the-vc709virtex-platform">Creating a Packet Processing application using the VC709(Virtex) platform</h1>
+<ul>
+<li><p>Import packet matching engine to the FPGA (vc709) context.
 Source found in $(VSI_INSTALL)/target/common/hls_examples/regex_packet/match/regex_exec.cc
-<img src="../img/vc709_regex_5.gif" alt="vc709_6 image" width="100%"></p></li>
+<img src="../img/vc709_regex_5.gif" alt="vc709_6 image" width="100%"></p>
+</li>
 <li><p>Import Match Compiler to the Software (X86) context.
 Source found in $(VSI_INSTALL)/target/common/hls_exmples/regex_packet/compile/regex_comp.cc
-<img src="../img/vc709_regex_6.gif" alt="vc709_7 image" width="100%"></p></li></ul>
-<ul><li><p>Add a TCP server to Softwar (X86) Context that will feed the pattern to be compiled
+<img src="../img/vc709_regex_6.gif" alt="vc709_7 image" width="100%"></p>
+</li>
+</ul>
+<ul>
+<li><p>Add a TCP server to Softwar (X86) Context that will feed the pattern to be compiled
 and sent the matching engine. Set the server port to 2020
-<img src="../img/vc709_regex_7.gif" alt="vc709_8 image" width="100%"></p></li>
+<img src="../img/vc709_regex_7.gif" alt="vc709_8 image" width="100%"></p>
+</li>
 <li><p>Add another TCP server in X86 that will send the packets to the line and recive matched
 packets back. Set the server port to 2021
-<img src="../img/vc709_regex_8.gif" alt="vc709_9 image" width="100%"></p></li>
+<img src="../img/vc709_regex_8.gif" alt="vc709_9 image" width="100%"></p>
+</li>
 <li><p>Annotate connections to be traced
-<img src="../img/vc709_regex_9.gif" alt="vc709_10 image" width="100%"></p></li>
+<img src="../img/vc709_regex_9.gif" alt="vc709_10 image" width="100%"></p>
+</li>
 <li><p>Generate the complete system &amp; hardware
-<img src="../img/vc709_regex_10.gif" alt="vc709_11 image" width="100%"></p></li>
+<img src="../img/vc709_regex_10.gif" alt="vc709_11 image" width="100%"></p>
+</li>
 <li><p>Synthesize the pattern matching engine using Vivado HLS
-<img src="../img/vc709_regex_11.gif" alt="vc709_12 image" width="100%"></p></li>
+<img src="../img/vc709_regex_11.gif" alt="vc709_12 image" width="100%"></p>
+</li>
 <li><p>Compile the Software project
-<img src="../img/vc709_regex_12.gif" alt="vc709_13 image" width="100%"></p></li>
+<img src="../img/vc709_regex_12.gif" alt="vc709_13 image" width="100%"></p>
+</li>
 <li><p>Generate FPGA bitstream for the FPGA project
-<img src="../img/create_bitstream.gif" alt="vc709_14 image" width="100%"></p></li></ul>
+<img src="../img/create_bitstream.gif" alt="vc709_14 image" width="100%"></p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -391,7 +405,7 @@ packets back. Set the server port to 2021
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Creating a Packet Processor","level":"1.4.2","depth":2,"next":{"title":"Usage - Logging","level":"1.5","depth":1,"path":"usage/logging.md","ref":"usage/logging.md","articles":[]},"previous":{"title":"Creating a VC709 Platform for packet processing","level":"1.4.1","depth":2,"path":"usage/VC709.md","ref":"usage/VC709.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload"],"styles":{"website":"style.css"},"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"usage/VC709_packet.md","mtime":"2016-03-23T00:58:44.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-12-31T05:02:06.011Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Creating a Packet Processor","level":"1.4.2","depth":2,"next":{"title":"Usage - Logging","level":"1.5","depth":1,"path":"usage/logging.md","ref":"usage/logging.md","articles":[]},"previous":{"title":"Creating a VC709 Platform for packet processing","level":"1.4.1","depth":2,"path":"usage/VC709.md","ref":"usage/VC709.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"usage/VC709_packet.md","mtime":"2016-03-23T00:58:44.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-14T02:03:55.934Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -401,7 +415,7 @@ packets back. Set the server port to 2021
     <script src="../gitbook/theme.js"></script>
     
         
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
         
     
         
