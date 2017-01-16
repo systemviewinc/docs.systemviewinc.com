@@ -1,6 +1,6 @@
 ### What is Docker
 
-Docker enables developers and IT admins to build, ship and run any application, anywhere.
+Docker enables developers and IT admins to build, ship and run any application, anywhere, in a virtualized environment without the overhead of a Virtual Machine such as VMware or VirtualBox.
 
 Docker runtime is available for Windows, Linux and MacOS.
 

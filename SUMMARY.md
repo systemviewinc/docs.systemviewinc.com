@@ -4,6 +4,7 @@
 * [Installation](installation/README.md)
   * [Linux](installation/linux.md)
   * [Windows](installation/windows.md)
+  * [Docker](installation/docker.md)
 * [Usage - (ZYNQ)](usage/README.md)
   * [Creating a Zynq Platform](usage/ZYNQ.md)
   * [Creating the Sort Demo](usage/creating_the_sort_demo.md)
@@ -13,4 +14,3 @@
 * [Usage - Logging](usage/logging.md)
 * [Usage - Command Line](usage/commandline.md)
 * [Templates](templates/index.md)
-* [Docker](docker/index.md)

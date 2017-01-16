@@ -7,3 +7,5 @@
 [Windows Installation](windows.md)
 
 [Linux Installation](linux.md)
+
+[Docker Installation](docker.md)
