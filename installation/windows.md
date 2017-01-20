@@ -15,5 +15,6 @@ Visual System Integrator installation is done by extracting the tarball on a hos
 2. Set an environment variable called VSI_INSTALL pointing to the directory e.g: "setx /m VSI_INSTALL c:/vsi" from command line (start as administrator) or alternatively use my-pc->properties->environment-variables.
 <img src="/img/windows_install.gif" alt="install iamge" width="100%">
 3. Copy vsi.lic or vsi.lic.<112233445566> license file to the %VSI_INSTALL% directory (multiple licenses can be kept in the same network shared directory).
-4. Start Vivado.
+4. Source in the batch file that ships with vivado; alternately, start Vivado Command Prompt (Not TCL shell).
+4. Start VSI using `%VSI_INSTALL%\host\windows\bin\vsi.exe`.
 <img src="/img/windows_start.gif" alt="install iamge" width="100%">
