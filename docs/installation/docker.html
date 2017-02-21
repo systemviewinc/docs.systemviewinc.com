@@ -281,6 +281,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.8" data-path="../tutorials/">
+            
+                <a href="../tutorials/">
+            
+                    
+                    Tutorials
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../tutorials/systeminterface.html">
+            
+                <a href="../tutorials/systeminterface.html">
+            
+                    
+                    System Interface
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -341,7 +373,23 @@
 <blockquote>
 <p>Warning: This will destroy the docker local image cache as well as any pending changes inside any running or stopped containers. Save your work in any running or stopped containers to a persistent volume before continuing. If you have just installed docker than this does not apply to you.</p>
 </blockquote>
-<p>Docker ships with a qemu-img utility. We will use it to resize the image. If you have already used <code>docker pull</code> or <code>docker run</code>, be warned that we will have to recreate the disk which will destroy all images and containers.</p>
+<pre><code>$ cd ~/Library/Containers/com.docker.docker/Data/database/
+
+$ git reset --hard
+HEAD is now at c435935 Settings Changed 09 Jan 17 20:28 +0000
+
+$ cat com.docker.driver.amd64-linux/disk/size
+65536
+
+# number is in MiB so 150G should be 153600:
+$ echo 153600 &gt; com.docker.driver.amd64-linux/disk/size
+
+$ git add com.docker.driver.amd64-linux/disk/size
+
+$ git commit -s -m &apos;New target disk size&apos;
+
+$ rm ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2
+</code></pre><p>Docker ships with a qemu-img utility. We will use it to resize the image. If you have already used <code>docker pull</code> or <code>docker run</code>, be warned that we will have to recreate the disk which will destroy all images and containers.</p>
 <ol>
 <li>Run <code>rm ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2</code> (alternatively use <code>mv</code> to move the file elsewhere if you intend to restore it later)</li>
 <li>Restart docker</li>
@@ -414,7 +462,7 @@ This will start VSI in detached mode and print a hash for the container. You wil
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.2.3","depth":2,"next":{"title":"Usage - (ZYNQ)","level":"1.3","depth":1,"path":"usage/README.md","ref":"usage/README.md","articles":[{"title":"Creating a Zynq Platform","level":"1.3.1","depth":2,"path":"usage/ZYNQ.md","ref":"usage/ZYNQ.md","articles":[]},{"title":"Creating the Sort Demo","level":"1.3.2","depth":2,"path":"usage/creating_the_sort_demo.md","ref":"usage/creating_the_sort_demo.md","articles":[]}]},"previous":{"title":"Windows","level":"1.2.2","depth":2,"path":"installation/windows.md","ref":"installation/windows.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"installation/docker.md","mtime":"2017-01-20T08:08:21.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-20T08:08:39.354Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.2.3","depth":2,"next":{"title":"Usage - (ZYNQ)","level":"1.3","depth":1,"path":"usage/README.md","ref":"usage/README.md","articles":[{"title":"Creating a Zynq Platform","level":"1.3.1","depth":2,"path":"usage/ZYNQ.md","ref":"usage/ZYNQ.md","articles":[]},{"title":"Creating the Sort Demo","level":"1.3.2","depth":2,"path":"usage/creating_the_sort_demo.md","ref":"usage/creating_the_sort_demo.md","articles":[]}]},"previous":{"title":"Windows","level":"1.2.2","depth":2,"path":"installation/windows.md","ref":"installation/windows.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"installation/docker.md","mtime":"2017-01-20T08:09:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-21T20:05:49.000Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
