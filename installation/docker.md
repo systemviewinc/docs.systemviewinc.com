@@ -1,77 +1,49 @@
-### What is Docker
+### About Docker
 
-Docker enables developers and IT admins to build, ship and run any application, anywhere, in a virtualized environment without the overhead of a Virtual Machine such as VMware or VirtualBox.
+Docker is a tool that can be used to package up and sandbox applications to be run at any host for which docker runtime is available. As of now, docker runtime is available for Windows, Linux and MacOS.
 
-Docker runtime is available for Windows, Linux and MacOS.
+## Visual System Integrator + Docker
 
-
-## Visual System Integrator is now available on Docker
-
-It is only a matter of `docker pull` and `docker run` to have a full functioning environment to run VSI.
+A docker container for VSI contains all the underlying dependencies required to run a VSI. It is a quicker method to test drive VSI or to programmatically install it on multiple hosts.
+In order to use the VSI container, you only need run `docker run gcr.io/systemviewinc/vsi:2016.4`.
 
 
-### Prerequisite
+### Requirements
 
-#### Install Docker
-Install docker runtime from https://docker.com
-
-Follow the instruction until you have docker daemon running then continue with the next step.
-
-If you already have docker installed, then you can skip this step.
-
-
-#### Resize docker disk size (MacOS only -- may apply to windows as well)
-
-Due to the base installation size, you will need a larger disk file for your docker runtime. Typically docker creates a disk file of 50GB which is insufficient for our purpose
-> Warning: This will destroy the docker local image cache as well as any pending changes inside any running or stopped containers. Save your work in any running or stopped containers to a persistent volume before continuing. If you have just installed docker than this does not apply to you.
-
-```
-$ cd ~/Library/Containers/com.docker.docker/Data/database/
-
-$ git reset --hard
-HEAD is now at c435935 Settings Changed 09 Jan 17 20:28 +0000
-
-$ cat com.docker.driver.amd64-linux/disk/size
-65536
-
-# number is in MiB so 150G should be 153600:
-$ echo 153600 > com.docker.driver.amd64-linux/disk/size
-
-$ git add com.docker.driver.amd64-linux/disk/size
-
-$ git commit -s -m 'New target disk size'
-
-$ rm ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2
-```
-
-Docker ships with a qemu-img utility. We will use it to resize the image. If you have already used `docker pull` or `docker run`, be warned that we will have to recreate the disk which will destroy all images and containers.
-
-1. Run `rm ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2` (alternatively use `mv` to move the file elsewhere if you intend to restore it later)
-2. Restart docker
-3. Run `/Applications/Docker.app/Contents/MacOS/qemu-img resize ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2 100G`
-4. Restart docker again.
-5. Once docker is running, run `docker run alpine df -h`. Verify that the `overlay` row has 99G or higher for size column.
-6. Optionally, increase the RAM used by docker to 8GB or more. This will ensure a smoother experience.
-
+- Docker: [Download here](https://docker.com)<sup>1</sup>
+- MacOS only: resize preallocated docker disk size to 110GB or more. [instructions](/docker/docker_reszize)
 
 #### Pull Visual System Integrator
 
 Run `docker pull gcr.io/systemviewinc/vsi:2016.4` and wait for the download to complete.
-
 >Warning: This will download 50GB+ of data. Make sure that you are on a fast connection.
 
 
-#### Run Visual System Integrator
+#### Docker + Visual System Integrator getting started
 
-1. Run `docker run -dP -e 1920x1080 -v /home/{USER}/{some projects directory to map}:/projects gcr.io/systemviewinc/vsi:2016.4` (1920x1080 can be replaced with the native resolution of your display)
-This will start VSI in detached mode and print a hash for the container. You will need the hash for the next step.
-
-2. Run `docker port {hash from step 1}` and note down the port that is printed.
-3. Use a VNC client to connect to VSI. (For MacOS, run `Screen Sharing` application and use `localhost:{port from step 2}`
+1. Run `docker run --privileged -dP -e 1920x1080 -v /home/{USER}/{some projects directory to map}:/projects gcr.io/systemviewinc/vsi:2016.4`<sup>2</sup> <sup>3</sup>
+An instance of VSI docker container will start in detached mode. The returned hash is the container ID.
+2. Run `docker port <container ID>`. This will return port numbers.
+3. Use a VNC client to connect to VSI. The connection should be made to `localhost:<port mapped to 5901>`(MacOS comes with a preinstalled VNC client `Screen Sharing`).<sup>4</sup>
+4. Optional: Another mapped port to ssh is available if commandline access is desired. Use the port mapped to 22 in previous steps. `ssh localhost -p <port mapped to 22>`<sup>4</sup>
 
 #### Licensing
 
 1. Open a command prompt inside the VSI container and use `ip address` to get the MAC Address.
-2. Send the MAC address to us along with the licensing request.
-3. Once you receive the vsi.lic.{MAC Address} file, use `docker copy vsi.lic.{MAC Address} /opt/Systemview/VSI/2016.4/` to copy the file.
-4. You should now be able to run VSI and generate projects. Open a command pormp and run `vsi` to start Visual System Integrator.
+2. Use the form [here](http://systemviewinc.com/license.html) to request a license.
+3. The license file, once received, can be used by `docker cp vsi.lic.<ethernet Address> <container id>:/opt/Systemview/VSI/2016.4/`. This will copy the file to the VSI container.
+
+
+#### Usage
+1. Connect to the container using VNC.
+3. Open a terminal and issue the command `vsi`. If the installation was successful then you should see text similar to this:
+	- ` Visual System Integrator version: V2017.1_HEAD-29-gdc85abc, Compiler: "GNU - 5.4.0 20160609", Buildhost: "nanl - Linux-4.4.0-72-generic", Date: 2017-04-07T17:24:29`<br/>`loading Visual System Integrator...`
+4. If you don't see similar text then see [Troubleshooting](/troubleshooting)
+
+#Footnotes
+
+1. Only required if docker wasn't previously installed.
+1. 1920x1080 can be replaced with your native display resolution.
+1. The `-v` switch can be used to map a local directory to a path inside the docker container. This can be used as the project directory or to save important user data that has to outlive the life of the docker container.
+1. The password is `systemview`
+1. VSI can be started without a valid license. All functionality works except the ability to generate projects.
