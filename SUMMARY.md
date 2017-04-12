@@ -15,7 +15,7 @@
   * [System Interface](usage/systeminterface.md)
 * [Features](features/readme.md)
 * [Troubleshooting](troubleshooting/readme.md)
-* [Releases](releases/readme.md)
+* [Releases](releases.md)
 * [Reference](reference/readme.md)
   * [Logging](usage/logging.md)
   * [Command Line](usage/commandline.md)
