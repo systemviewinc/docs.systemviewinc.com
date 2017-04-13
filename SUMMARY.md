@@ -20,6 +20,8 @@
   * [Developer Workflow](workflow.md)
   * [VSI Runtime](runtime/readme.md)
     * [Runtime](runtime/runtime.md)
+    * [Custom](runtime/custom.md)
+    * [Inout](runtime/inout.md)
   * [Logging](usage/logging.md)
   * [Command Line](usage/commandline.md)
   * [Advanced](advanced/readme.md)

@@ -5,11 +5,11 @@ Visual System Integrator includes a lightweight library that provides implementa
 - Runtime
 	- Responsible for initialization and shutdown routines.
 - Custom
-	- Provides routines to run external functions. It is responsible to data streams and convert it into the parameter types required by the function. Also see related IP `vsi_gen_ip`.
+	- Provides routines to run external functions. It is responsible for data streams and also convert them into the parameter types required by the function. Also see related IP `vsi_gen_ip`.
 - TcpServer
 	- Provides a TCP interface that listens for incoming connection on a given port for the duration until the context is active. Also see related IP `tcp_server`
 - TcpClient
-	- Provides a TCP interface that attempts to connect to a given port. It optimistically retry if disconnected and until the context is active. Also see related IP `tcp_client`;
+	- Provides a TCP interface that attempts to connect to a given port. It will optimistically continue to retry if disconnected until the context is active. Also see related IP `tcp_client`;
 - Interconnect
 	- Provides connection interface between contexts connected through ethernet. Also see Related IP `platform_interconnect_sw`.
 - Net

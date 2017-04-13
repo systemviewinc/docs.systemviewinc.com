@@ -1,3 +1,3 @@
 ## Development Workflow
 
-Visual System Integrator workflow starts with creating a project
+Visual System Integrator workflow starts with creating a project. 

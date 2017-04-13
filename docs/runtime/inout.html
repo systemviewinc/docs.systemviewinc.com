@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Docker · Visual System Integrator</title>
+        <title>Inout · Visual System Integrator</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -49,10 +49,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../usage/readme.html" />
+    <link rel="next" href="../usage/logging.html" />
     
     
-    <link rel="prev" href="windows.html" />
+    <link rel="prev" href="custom.html" />
     
 
     </head>
@@ -94,9 +94,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="readme.html">
+        <li class="chapter " data-level="1.2" data-path="../installation/readme.html">
             
-                <a href="readme.html">
+                <a href="../installation/readme.html">
             
                     
                     Installation
@@ -108,9 +108,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="linux.html">
+        <li class="chapter " data-level="1.2.1" data-path="../installation/linux.html">
             
-                <a href="linux.html">
+                <a href="../installation/linux.html">
             
                     
                     Linux
@@ -121,9 +121,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="windows.html">
+        <li class="chapter " data-level="1.2.2" data-path="../installation/windows.html">
             
-                <a href="windows.html">
+                <a href="../installation/windows.html">
             
                     
                     Windows
@@ -134,9 +134,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.3" data-path="docker.html">
+        <li class="chapter " data-level="1.2.3" data-path="../installation/docker.html">
             
-                <a href="docker.html">
+                <a href="../installation/docker.html">
             
                     
                     Docker
@@ -340,9 +340,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="../runtime/readme.html">
+        <li class="chapter " data-level="1.7.2" data-path="readme.html">
             
-                <a href="../runtime/readme.html">
+                <a href="readme.html">
             
                     
                     VSI Runtime
@@ -354,9 +354,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.2.1" data-path="../runtime/runtime.html">
+        <li class="chapter " data-level="1.7.2.1" data-path="runtime.html">
             
-                <a href="../runtime/runtime.html">
+                <a href="runtime.html">
             
                     
                     Runtime
@@ -367,9 +367,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2.2" data-path="../runtime/custom.html">
+        <li class="chapter " data-level="1.7.2.2" data-path="custom.html">
             
-                <a href="../runtime/custom.html">
+                <a href="custom.html">
             
                     
                     Custom
@@ -380,9 +380,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2.3" data-path="../runtime/inout.html">
+        <li class="chapter active" data-level="1.7.2.3" data-path="inout.html">
             
-                <a href="../runtime/inout.html">
+                <a href="inout.html">
             
                     
                     Inout
@@ -491,7 +491,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Docker</a>
+        <a href=".." >Inout</a>
     </h1>
 </div>
 
@@ -506,52 +506,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="about-docker">About Docker</h3>
-<p>Docker is a tool that can be used to package up and sandbox applications to be run at any host for which docker runtime is available. As of now, docker runtime is available for Windows, Linux and MacOS.</p>
-<h2 id="visual-system-integrator--docker">Visual System Integrator + Docker</h2>
-<p>A docker container for VSI contains all the underlying dependencies required to run a VSI. It is a quicker method to test drive VSI or to programmatically install it on multiple hosts.
-In order to use the VSI container, you only need run <code>docker run gcr.io/systemviewinc/vsi:2016.4</code>.</p>
-<h3 id="requirements">Requirements</h3>
-<ul>
-<li>Docker: <a href="https://docker.com" target="_blank">Download here</a><sup>1</sup></li>
-<li>MacOS only: resize preallocated docker disk size to 110GB or more. <a href="../docker/docker_reszize">instructions</a></li>
-</ul>
-<h4 id="pull-visual-system-integrator">Pull Visual System Integrator</h4>
-<p>Run <code>docker pull gcr.io/systemviewinc/vsi:2016.4</code> and wait for the download to complete.</p>
-<blockquote>
-<p>Warning: This will download 50GB+ of data. Make sure that you are on a fast connection.</p>
-</blockquote>
-<h4 id="docker--visual-system-integrator-getting-started">Docker + Visual System Integrator getting started</h4>
-<ol>
-<li>Run <code>docker run --privileged -dP -e 1920x1080 -v /home/{USER}/{some projects directory to map}:/projects gcr.io/systemviewinc/vsi:2016.4</code><sup>2</sup> <sup>3</sup>
-An instance of VSI docker container will start in detached mode. The returned hash is the container ID.</li>
-<li>Run <code>docker port &lt;container ID&gt;</code>. This will return port numbers.</li>
-<li>Use a VNC client to connect to VSI. The connection should be made to <code>localhost:&lt;port mapped to 5901&gt;</code>(MacOS comes with a preinstalled VNC client <code>Screen Sharing</code>).<sup>4</sup></li>
-<li>Optional: Another mapped port to ssh is available if commandline access is desired. Use the port mapped to 22 in previous steps. <code>ssh localhost -p &lt;port mapped to 22&gt;</code><sup>4</sup></li>
-</ol>
-<h4 id="licensing">Licensing</h4>
-<ol>
-<li>Open a command prompt inside the VSI container and use <code>ip address</code> to get the MAC Address.</li>
-<li>Use the form <a href="http://systemviewinc.com/license.html" target="_blank">here</a> to request a license.</li>
-<li>The license file, once received, can be used by <code>docker cp vsi.lic.&lt;ethernet Address&gt; &lt;container id&gt;:/opt/Systemview/VSI/2016.4/</code>. This will copy the file to the VSI container.</li>
-</ol>
-<h4 id="usage">Usage</h4>
-<ol>
-<li>Connect to the container using VNC.</li>
-<li>Open a terminal and issue the command <code>vsi</code>. If the installation was successful then you should see text similar to this:<ul>
-<li><code>Visual System Integrator version: V2017.1_HEAD-29-gdc85abc, Compiler: &quot;GNU - 5.4.0 20160609&quot;, Buildhost: &quot;nanl - Linux-4.4.0-72-generic&quot;, Date: 2017-04-07T17:24:29</code><br><code>loading Visual System Integrator...</code></li>
-</ul>
-</li>
-<li>If you don&apos;t see similar text then see <a href="../troubleshooting">Troubleshooting</a></li>
-</ol>
-<h1 id="footnotes">Footnotes</h1>
-<ol>
-<li>Only required if docker wasn&apos;t previously installed.</li>
-<li>1920x1080 can be replaced with your native display resolution.</li>
-<li>The <code>-v</code> switch can be used to map a local directory to a path inside the docker container. This can be used as the project directory or to save important user data that has to outlive the life of the docker container.</li>
-<li>The password is <code>systemview</code></li>
-<li>VSI can be started without a valid license. All functionality works except the ability to generate projects.</li>
-</ol>
+                                <h3 id="vsiruntimeinout">vsi::runtime::Inout</h3>
+<h4 id="function-reference">Function Reference</h4>
+<h4 id="footnotes">Footnotes</h4>
 
                                 
                                 </section>
@@ -579,12 +536,12 @@ An instance of VSI docker container will start in detached mode. The returned ha
 
             
                 
-                <a href="windows.html" class="navigation navigation-prev " aria-label="Previous page: Windows">
+                <a href="custom.html" class="navigation navigation-prev " aria-label="Previous page: Custom">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../usage/readme.html" class="navigation navigation-next " aria-label="Next page: Guides">
+                <a href="../usage/logging.html" class="navigation navigation-next " aria-label="Next page: Logging">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -595,7 +552,7 @@ An instance of VSI docker container will start in detached mode. The returned ha
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.2.3","depth":2,"next":{"title":"Guides","level":"1.3","depth":1,"path":"usage/readme.md","ref":"usage/readme.md","articles":[{"title":"ZYNQ","level":"1.3.1","depth":2,"path":"usage/zynq.md","ref":"usage/zynq.md","articles":[{"title":"Creating a Zynq Platform","level":"1.3.1.1","depth":3,"path":"usage/zynq.md","ref":"usage/zynq.md","articles":[]},{"title":"Creating the Sort Demo","level":"1.3.1.2","depth":3,"path":"usage/creating_the_sort_demo.md","ref":"usage/creating_the_sort_demo.md","articles":[]}]},{"title":"VC709","level":"1.3.2","depth":2,"path":"usage/vc709.md","ref":"usage/vc709.md","articles":[{"title":"Creating a VC709 Platform for packet processing","level":"1.3.2.1","depth":3,"path":"usage/vc709.md","ref":"usage/vc709.md","articles":[]},{"title":"Creating a Packet Processor","level":"1.3.2.2","depth":3,"path":"usage/vc709_packet.md","ref":"usage/vc709_packet.md","articles":[]}]},{"title":"System Interface","level":"1.3.3","depth":2,"path":"usage/systeminterface.md","ref":"usage/systeminterface.md","articles":[]}]},"previous":{"title":"Windows","level":"1.2.2","depth":2,"path":"installation/windows.md","ref":"installation/windows.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"installation/docker.md","mtime":"2017-04-11T21:48:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-04-13T01:12:37.191Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Inout","level":"1.7.2.3","depth":3,"next":{"title":"Logging","level":"1.7.3","depth":2,"path":"usage/logging.md","ref":"usage/logging.md","articles":[]},"previous":{"title":"Custom","level":"1.7.2.2","depth":3,"path":"runtime/custom.md","ref":"runtime/custom.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"runtime/inout.md","mtime":"2017-04-13T01:06:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-04-13T01:12:37.191Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
