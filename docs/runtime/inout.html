@@ -49,7 +49,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../usage/logging.html" />
+    <link rel="next" href="tcp_server.html" />
     
     
     <link rel="prev" href="custom.html" />
@@ -393,6 +393,97 @@
             
         </li>
     
+        <li class="chapter " data-level="1.7.2.4" data-path="tcp_server.html">
+            
+                <a href="tcp_server.html">
+            
+                    
+                    Tcp Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.5" data-path="tcp_client.html">
+            
+                <a href="tcp_client.html">
+            
+                    
+                    Tcp Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.6" data-path="net.html">
+            
+                <a href="net.html">
+            
+                    
+                    Net
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.7" data-path="interconnect.html">
+            
+                <a href="interconnect.html">
+            
+                    
+                    Interconnect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.8" data-path="connect.html">
+            
+                <a href="connect.html">
+            
+                    
+                    Connect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.9" data-path="log.html">
+            
+                <a href="log.html">
+            
+                    
+                    Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.10" data-path="buffer.html">
+            
+                <a href="buffer.html">
+            
+                    
+                    Buffer
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -507,8 +598,103 @@
                                 <section class="normal markdown-section">
                                 
                                 <h3 id="vsiruntimeinout">vsi::runtime::Inout</h3>
+<p>This is a utility class that serves as a binding between runtime components. It is responsible for moving data in/out and to provide handles to device and memory.</p>
 <h4 id="function-reference">Function Reference</h4>
+<ul>
+<li><code>Inout(INOUT_TYPE type)</code>: Constructs an inout. The newly constructed inout is set as an input, an output or an inout.<ul>
+<li><code>type</code>: The type of the newly constructed inout. Valid types are INPUT, OUTPUT and INOUT.</li>
+</ul>
+</li>
+<li><code>Inout(INOUT_TYPE t, const char *name)</code>: Alternative constructor that takes a name as a parameter. Used when the parent component is on PL&apos;s side.<ul>
+<li><code>type</code>: The type of the newly constructed inout. Valid types are INPUT, OUTPUT and INOUT.</li>
+<li><code>name</code>: The name of the logical component that this inout represents.</li>
+</ul>
+</li>
+<li><code>void init(Log *log)</code>: Initializes the inout. Once initialized, the inout can be written to and/or read from depending on the configuration.<ul>
+<li><code>log</code>: The logger component to use. An inout is typically attached to a component and shares an instance of the logger component.</li>
+</ul>
+</li>
+<li><code>void init(Log *_log, std::function&lt;void(spBuffer)&gt; _write_data)</code>: Alternative initialization that allows to pass a function definition. Used by the components when initializing the <code>Inout</code> as a type <code>input</code> or <code>inout</code> in order to process the incoming data.<ul>
+<li><code>log</code>: The logger component to use. An inout is typically attached to a component and shares an instance of the logger component.</li>
+<li><code>_write_data</code>: A function definition passed that will be called each time data is written to the <code>Inout</code>. The data pointer is passed as a spBuffer (<code>std::shared_ptr&lt;Buffer&gt;</code><sup>1</sup>)</li>
+</ul>
+</li>
+<li><code>void read_connection(spBuffer buf)</code>: Read a chunk of data from the opposite endpoint of the attached connection.<sup>2</sup><ul>
+<li><code>buf</code>: Buffer pointing to the data.<sup>1</sup></li>
+</ul>
+</li>
+<li><code>void write_connection(spBuffer buf)</code>: Write a chunk of data to the opposite endpoint of the attached connection.<sup>2</sup><ul>
+<li><code>buf</code>: Buffer pointing to the data.<sup>1</sup></li>
+</ul>
+</li>
+<li><code>void attach(class Connect *conn)</code>: Attached this <code>Inout</code> to a connection.<sup>2</sup><ul>
+<li><code>conn</code>: A connection class that this inout will attach itself to.<sup>2</sup></li>
+</ul>
+</li>
+<li><code>const char *name()</code>: Return the name of the logical component that this <code>inout</code> is attached with.<ul>
+<li>return: A constant pointer to the name of the component.</li>
+</ul>
+</li>
+<li><code>void set_device(const char *device_name)</code>: Takes a device path as a parameter, opening it and attaching itself to it. If the <code>Inout</code> is set as <code>INPUT</code> then the device is treated as a write only. Conversely, if the <code>Inout</code> is set as <code>OUTPUT</code>, the device is set as read only. If the <code>Inout</code> is set as <code>INOUT</code>, both read and write is available. In case of <code>OUTPUT</code> or <code>INOUT</code>, the device will be polled for data.<sup>3</sup><ul>
+<li><code>device_name</code>: The device path to use. Needs to be a valid device created with mknod.</li>
+</ul>
+</li>
+<li><code>void set_device_rpc(const char *host_name, int m)</code>: Binds to a host a an RPC client. The behavior is similar to set_device except that the connection is made over the network.<ul>
+<li><code>host_name</code>: The hostname or IP address of the RPC server.</li>
+<li><code>m</code>: A unique number that is used to demux the RPC data belonging to a device.</li>
+</ul>
+</li>
+<li><code>void read_data(spBuffer buf)</code>: Attempts to read a chunk of data from the attached device. Not valid if the attached component is not a device.<sup>3</sup><ul>
+<li><code>buf</code>: A Buffer pointer contains the data or null if no data was available.<sup>1</sup></li>
+</ul>
+</li>
+<li><code>hls::stream_base *stream()</code>: Returns a <code>hls::stream_buffer</code> pointer. The stream buffer can be written and read from, depending on how the <code>Inout</code> was configured.<ul>
+<li>return: Pointer to a <code>hls::stream_buffer</code>.</li>
+</ul>
+</li>
+<li><code>void init_device()</code>: Initializes an attached device. This is an alternative to <code>init()</code> and only works if <code>set_device</code> or <code>set_device_rpc</code> was called beforehand.</li>
+<li><code>void set_address(int64_t _ba, unsigned int _r)</code>: Wrapper function that takes device specific parameters as part of device setup process. The parameters as not kept and are passed directly to the attached <code>Device</code>.<sup>3</sup><ul>
+<li><code>_ba</code>: Base address for the device</li>
+<li><code>_r</code>: Read size for the device.</li>
+</ul>
+</li>
+<li><code>void set_control_address(int64_t _ba, unsigned int _r, int _sp)</code>: Wrapper function that takes device specific parameters as part of device setup process. The parameters as not kept and are passed directly to the attached <code>Device</code>.<sup>3</sup><ul>
+<li><code>_ba</code>: Base address for the device control block.</li>
+<li><code>_r</code>: Maximum read size for the device control block.</li>
+</ul>
+</li>
+<li><code>void set_interrupt(unsigned int interrupt_number)</code>: Wrapper function that takes device specific parameters as part of device setup process. The parameters as not kept and are passed directly to the attached <code>Device</code>.<sup>3</sup><ul>
+<li><code>interrupt_number</code>: Interrupt number bound to the device descriptor.</li>
+</ul>
+</li>
+<li><code>void set_device_size(unsigned int _size)</code>: Wrapper function that takes device specific parameters as part of device setup process. The parameters as not kept and are passed directly to the attached <code>Device</code>.<sup>3</sup><ul>
+<li><code>_size</code>: Read size for the device. This is the same as the <code>_r</code> parameter in <code>set_address</code>.</li>
+</ul>
+</li>
+<li><code>int poll(int timeout)</code>: Wrapper function that takes device specific parameters as part of device setup process. The parameters as not kept and are passed directly to the attached <code>Device</code>.<sup>3</sup><ul>
+<li><code>timeout</code>: How long before the poll timesout.</li>
+</ul>
+</li>
+<li><code>int poll_connection(int timeout)</code>: Wrapper function that takes device specific parameters as part of device setup process. The parameters as not kept and are passed directly to the attached <code>Device</code> at the opposite endpoint of the connection.<sup>3</sup><ul>
+<li><code>timeout</code>: How long before the poll timesout.</li>
+</ul>
+</li>
+<li><code>int device_fd()</code>: Wrapper function that takes device specific parameters as part of device setup process. The parameters as not kept and are passed directly to the attached <code>Device</code>.<sup>3</sup><ul>
+<li>return: returns the underlying device descriptor number.</li>
+</ul>
+</li>
+<li><code>int device_fd_connection()</code>: Wrapper function that takes device specific parameters as part of device setup process. The parameters as not kept and are passed directly to the attached <code>Device</code> at the opposite endpoint of the connection.<sup>3</sup><ul>
+<li>return: returns the underlying device descriptor number.</li>
+</ul>
+</li>
+<li><code>INOUT_TYPE type() {return _type;</code>: Returns the type of the connection earlier set while <code>Inout</code> was constructed.</li>
+</ul>
 <h4 id="footnotes">Footnotes</h4>
+<ol>
+<li><a href="buffer.html">Buffer reference</a></li>
+<li><a href="connect.html">Connect reference</a></li>
+<li><a href="device.md">Device reference</a></li>
+</ol>
 
                                 
                                 </section>
@@ -541,7 +727,7 @@
                 </a>
                 
                 
-                <a href="../usage/logging.html" class="navigation navigation-next " aria-label="Next page: Logging">
+                <a href="tcp_server.html" class="navigation navigation-next " aria-label="Next page: Tcp Server">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -552,7 +738,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Inout","level":"1.7.2.3","depth":3,"next":{"title":"Logging","level":"1.7.3","depth":2,"path":"usage/logging.md","ref":"usage/logging.md","articles":[]},"previous":{"title":"Custom","level":"1.7.2.2","depth":3,"path":"runtime/custom.md","ref":"runtime/custom.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"runtime/inout.md","mtime":"2017-04-13T01:06:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-04-13T01:12:37.191Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Inout","level":"1.7.2.3","depth":3,"next":{"title":"Tcp Server","level":"1.7.2.4","depth":3,"path":"runtime/tcp_server.md","ref":"runtime/tcp_server.md","articles":[]},"previous":{"title":"Custom","level":"1.7.2.2","depth":3,"path":"runtime/custom.md","ref":"runtime/custom.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"runtime/inout.md","mtime":"2017-04-13T23:20:22.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-04-14T01:38:45.888Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
