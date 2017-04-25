@@ -18,3 +18,6 @@
 	- Check that the data type is correctly set. For valid types that are supported, [check here](/runtime/sw_wizard)
 - Cannot import <name of module>
 	- Make sure that all the sources are present in the current directory. In addition, a `_<context_name>.so` should be present.
+
+- Build errors on `Flow->Build Software Contexts`
+	- When switching between a cross compile and host compile for a context, even when "clean and rebuild" is selected, the switched context still has a toolchain file and CMake may attempt to use it when compiling. The fix is to delete the context directory under `<project>/vsi_auto_gen/sw` and regenerate the context using `generate system`. After which the build should use the correct compiler.

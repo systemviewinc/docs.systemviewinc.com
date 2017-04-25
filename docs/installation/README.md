@@ -29,4 +29,3 @@ Download installation files for Visual System Integrator. Choose the version tha
 - [Windows](windows.md)
 - [Linux](linux.md)
 - [Docker](docker.md)
-- [AWS F1](aws.md)
