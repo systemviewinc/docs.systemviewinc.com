@@ -15,13 +15,13 @@ In order to use the VSI container, you only need run `docker run gcr.io/systemvi
 
 #### Pull Visual System Integrator
 
-Run `docker pull gcr.io/systemviewinc/vsi:2016.4` and wait for the download to complete.
+Run `docker pull gcr.io/systemviewinc/vsi:{version_number}` and wait for the download to complete.
 >Warning: This will download 50GB+ of data. Make sure that you are on a fast connection.
 
 
 #### Docker + Visual System Integrator getting started
 
-1. Run `docker run --privileged -dP -e 1920x1080 -v /home/{USER}/{some projects directory to map}:/projects gcr.io/systemviewinc/vsi:2016.4`<sup>2</sup> <sup>3</sup>
+1. Run `docker run --privileged -dP -e 1920x1080 -v /home/{USER}/{some projects directory to map}:/projects gcr.io/systemviewinc/vsi:{version_number}`<sup>2</sup> <sup>3</sup>
 An instance of VSI docker container will start in detached mode. The returned hash is the container ID.
 2. Run `docker port <container ID>`. This will return port numbers.
 3. Use a VNC client to connect to VSI. The connection should be made to `localhost:<port mapped to 5901>`(MacOS comes with a preinstalled VNC client `Screen Sharing`).<sup>4</sup>
@@ -31,7 +31,7 @@ An instance of VSI docker container will start in detached mode. The returned ha
 
 1. Open a command prompt inside the VSI container and use `ip address` to get the MAC Address.
 2. Use the form [here](http://systemviewinc.com/license.html) to request a license.
-3. The license file, once received, can be used by `docker cp vsi.lic.<ethernet Address> <container id>:/opt/Systemview/VSI/2016.4/`. This will copy the file to the VSI container.
+3. The license file, once received, can be used by `docker cp vsi.lic.<ethernet Address> <container id>:/opt/Systemview/VSI/{version_number}/`. This will copy the file to the VSI container.
 
 
 #### Usage

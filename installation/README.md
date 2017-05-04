@@ -21,7 +21,7 @@ Before you start, make sure that your system meets the minimum hardware requirem
 Download installation files for Visual System Integrator. Choose the version that corresponds to the Vivado version that you have installed.
 
 - VSI installation files are available for:
-	- Download link for [Visual System Integrator 2016.4 (works with corresponding Vivado HLs System Edition 2016.4)](http://drive.google.com)
+	- Download link for [Visual System Integrator 2016.4 or newer (works with corresponding Vivado HLs System Edition 2016.4 or newer)](https://systemviewinc.com/download.html)
 -  License for Visual System Integrator [request one here](http://systemviewinc.com/license.html).
 
 ### Host specific instructions
