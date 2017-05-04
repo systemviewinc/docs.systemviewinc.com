@@ -94,9 +94,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="readme.html">
+        <li class="chapter " data-level="1.2" data-path="readme.md">
             
-                <a href="readme.html">
+                <span>
             
                     
                     Installation
@@ -634,13 +634,13 @@ In order to use the VSI container, you only need run <code>docker run gcr.io/sys
 <li>MacOS only: resize preallocated docker disk size to 110GB or more. <a href="../docker/docker_reszize">instructions</a></li>
 </ul>
 <h4 id="pull-visual-system-integrator">Pull Visual System Integrator</h4>
-<p>Run <code>docker pull gcr.io/systemviewinc/vsi:2016.4</code> and wait for the download to complete.</p>
+<p>Run <code>docker pull gcr.io/systemviewinc/vsi:{version_number}</code> and wait for the download to complete.</p>
 <blockquote>
 <p>Warning: This will download 50GB+ of data. Make sure that you are on a fast connection.</p>
 </blockquote>
 <h4 id="docker--visual-system-integrator-getting-started">Docker + Visual System Integrator getting started</h4>
 <ol>
-<li>Run <code>docker run --privileged -dP -e 1920x1080 -v /home/{USER}/{some projects directory to map}:/projects gcr.io/systemviewinc/vsi:2016.4</code><sup>2</sup> <sup>3</sup>
+<li>Run <code>docker run --privileged -dP -e 1920x1080 -v /home/{USER}/{some projects directory to map}:/projects gcr.io/systemviewinc/vsi:{version_number}</code><sup>2</sup> <sup>3</sup>
 An instance of VSI docker container will start in detached mode. The returned hash is the container ID.</li>
 <li>Run <code>docker port &lt;container ID&gt;</code>. This will return port numbers.</li>
 <li>Use a VNC client to connect to VSI. The connection should be made to <code>localhost:&lt;port mapped to 5901&gt;</code>(MacOS comes with a preinstalled VNC client <code>Screen Sharing</code>).<sup>4</sup></li>
@@ -650,7 +650,7 @@ An instance of VSI docker container will start in detached mode. The returned ha
 <ol>
 <li>Open a command prompt inside the VSI container and use <code>ip address</code> to get the MAC Address.</li>
 <li>Use the form <a href="http://systemviewinc.com/license.html" target="_blank">here</a> to request a license.</li>
-<li>The license file, once received, can be used by <code>docker cp vsi.lic.&lt;ethernet Address&gt; &lt;container id&gt;:/opt/Systemview/VSI/2016.4/</code>. This will copy the file to the VSI container.</li>
+<li>The license file, once received, can be used by <code>docker cp vsi.lic.&lt;ethernet Address&gt; &lt;container id&gt;:/opt/Systemview/VSI/{version_number}/</code>. This will copy the file to the VSI container.</li>
 </ol>
 <h4 id="usage">Usage</h4>
 <ol>
@@ -712,7 +712,7 @@ An instance of VSI docker container will start in detached mode. The returned ha
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.2.3","depth":2,"next":{"title":"AWS F1","level":"1.2.4","depth":2,"path":"installation/aws.md","ref":"installation/aws.md","articles":[]},"previous":{"title":"Windows","level":"1.2.2","depth":2,"path":"installation/windows.md","ref":"installation/windows.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"installation/docker.md","mtime":"2017-04-11T21:48:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-04-25T00:53:55.703Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.2.3","depth":2,"next":{"title":"AWS F1","level":"1.2.4","depth":2,"path":"installation/aws.md","ref":"installation/aws.md","articles":[]},"previous":{"title":"Windows","level":"1.2.2","depth":2,"path":"installation/windows.md","ref":"installation/windows.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"installation/docker.md","mtime":"2017-05-04T17:08:37.196Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-04T18:02:05.373Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
