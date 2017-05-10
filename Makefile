@@ -1,5 +1,8 @@
-
 STAGING_DIR ?= ./
+
+build:
+	gitbook build . docs
+	git checkout docs/gitbook/images/
 
 gb_install:
 	gitbook install
