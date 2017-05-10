@@ -35,3 +35,4 @@
   * [Command Line](usage/commandline.md)
   * [Advanced](advanced/readme.md)
     * [Templates](templates/index.md)
+* [Getting Started](getting_started/getting_started.md)
