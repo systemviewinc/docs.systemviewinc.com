@@ -2,9 +2,11 @@
 
 Visual System Integrator installation is supported on Windows and Linux.
 
-In addition, we also provide a beta docker image which can be used on MacOS.
+In addition an <b>Amazon AWS AMI</b> is also provided (with an alternative licensing model<sup>pay per hour</sup>) which can be used independently or in combination with AWS F1 FPGA Instances.
 
-## Requirements
+We also have a prebuilt <b>Docker image</b> <sup>(beta)</sup> which can be used on MacOS.
+
+## Requirements (excluding Amazon AWS AMI)
 Before you start, make sure that your system meets the minimum hardware requirements as below:
 
 ### Hardware Requirements:
@@ -28,4 +30,5 @@ Download installation files for Visual System Integrator. Choose the version tha
 
 - [Windows](windows.md)
 - [Linux](linux.md)
+- [Amazon AWS](aws.md)
 - [Docker](docker.md)

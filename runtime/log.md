@@ -35,4 +35,4 @@ The runtime provides a modular logging interface that can be enable when the exe
 	- return: Name of the component.
 
 #### Footnotes
-1. [Logging](usage/logging.md)
+1. [Logging](/usage/logging.md)

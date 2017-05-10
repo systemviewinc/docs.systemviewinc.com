@@ -12,3 +12,5 @@
 |Synthesize HLs from within VSI|Yes|Yes|
 |Python Software Wizard IP|No|Yes|
 |Java Software Wizard IP|No|Yes|
+|API Interface|No|Yes|
+|RESTful Interface|No|Yes|
