@@ -7,11 +7,11 @@ This enables the user to easily integrate their existing workflow, utilize exist
 For experimentation and/or research, it allows a system architect to keep well-tested and established parts of the system in C/C++/FPGA while allowing rapid prototyping using Python or Java.
 
 
-# Enabling External Language Support
+### Enabling External Language Support
 
 Any version beyond VSI 2017.1 already has external language support.
 
-# Walkthrough for Python
+### Walkthrough for Python
 
 - For the purpose of demonstration in this walkthrough, we will use a simple python function included in vsi_examples repository. Using git, clone the vsi_examples repository: `https://github.com/systemviewinc/vsi-examples.git`.
 - Create a new project and work through the wizard to the end. Select any part/board as it won't matter since we're only going to be using the software for the walkthrough.
@@ -45,7 +45,7 @@ Any version beyond VSI 2017.1 already has external language support.
 - Run the system by using the following command `python python_test/python/python_test_main.py`
 - The example will send 256 bytes of data through each block. A statement on console is printed every 100,000 iteration.
 
-# Walkthrough for Java
+### Walkthrough for Java
 
 - For the purpose of demonstration in this walkthrough, we will use a simple java function included in vsi_examples repository. Using git, clone the vsi_examples repository: `https://github.com/systemviewinc/vsi-examples.git`.
 - Create a new project and work through the wizard to the end. Select any part/board as it won't matter since we're only going to be using the software for the walkthrough.

@@ -313,11 +313,56 @@
                 <a href="external_interface.html">
             
                     
-                    VSI Runtime with external code
+                    Interfacing with External Systems
             
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.6.1" data-path="api.html">
+            
+                <a href="api.html">
+            
+                    
+                    Using API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6.2" data-path="tcp.html">
+            
+                <a href="tcp.html">
+            
+                    
+                    Using TCP Ports
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6.3" data-path="rest.html">
+            
+                <a href="rest.html">
+            
+                    
+                    Using RESTful Endpoints
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -666,9 +711,9 @@
 <p>Visual System Integrator 2017.1 and onwards provides builtin bindings for Python and Java. A user can use Python and/or Java to call FPGA core directly or go through an intermediary C/C++ block. In addition, a Python/Java callback can be initiated directly from FPGA. Moreover, a mix/match between Python, Java and C/C++ can be used in a single system<sup>1</sup></p>
 <p>This enables the user to easily integrate their existing workflow, utilize existing language expertise and third-party libraries effortlessly. It can also be used to integrate the VSI output with another system using one of the external language.</p>
 <p>For experimentation and/or research, it allows a system architect to keep well-tested and established parts of the system in C/C++/FPGA while allowing rapid prototyping using Python or Java.</p>
-<h1 id="enabling-external-language-support">Enabling External Language Support</h1>
+<h3 id="enabling-external-language-support">Enabling External Language Support</h3>
 <p>Any version beyond VSI 2017.1 already has external language support.</p>
-<h1 id="walkthrough-for-python">Walkthrough for Python</h1>
+<h3 id="walkthrough-for-python">Walkthrough for Python</h3>
 <ul>
 <li>For the purpose of demonstration in this walkthrough, we will use a simple python function included in vsi_examples repository. Using git, clone the vsi_examples repository: <code>https://github.com/systemviewinc/vsi-examples.git</code>.</li>
 <li>Create a new project and work through the wizard to the end. Select any part/board as it won&apos;t matter since we&apos;re only going to be using the software for the walkthrough.</li>
@@ -702,7 +747,7 @@
 <li>Run the system by using the following command <code>python python_test/python/python_test_main.py</code></li>
 <li>The example will send 256 bytes of data through each block. A statement on console is printed every 100,000 iteration.</li>
 </ul>
-<h1 id="walkthrough-for-java">Walkthrough for Java</h1>
+<h3 id="walkthrough-for-java">Walkthrough for Java</h3>
 <ul>
 <li>For the purpose of demonstration in this walkthrough, we will use a simple java function included in vsi_examples repository. Using git, clone the vsi_examples repository: <code>https://github.com/systemviewinc/vsi-examples.git</code>.</li>
 <li>Create a new project and work through the wizard to the end. Select any part/board as it won&apos;t matter since we&apos;re only going to be using the software for the walkthrough.</li>
@@ -779,7 +824,7 @@
                 </a>
                 
                 
-                <a href="external_interface.html" class="navigation navigation-next " aria-label="Next page: VSI Runtime with external code">
+                <a href="external_interface.html" class="navigation navigation-next " aria-label="Next page: Interfacing with External Systems">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -790,7 +835,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python and Java","level":"1.3.5","depth":2,"next":{"title":"VSI Runtime with external code","level":"1.3.6","depth":2,"path":"usage/external_interface.md","ref":"usage/external_interface.md","articles":[]},"previous":{"title":"System Interface","level":"1.3.4","depth":2,"path":"usage/systeminterface.md","ref":"usage/systeminterface.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"usage/python_java.md","mtime":"2017-05-10T23:00:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-10T23:00:23.229Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python and Java","level":"1.3.5","depth":2,"next":{"title":"Interfacing with External Systems","level":"1.3.6","depth":2,"path":"usage/external_interface.md","ref":"usage/external_interface.md","articles":[{"title":"Using API","level":"1.3.6.1","depth":3,"path":"usage/api.md","ref":"usage/api.md","articles":[]},{"title":"Using TCP Ports","level":"1.3.6.2","depth":3,"path":"usage/tcp.md","ref":"usage/tcp.md","articles":[]},{"title":"Using RESTful Endpoints","level":"1.3.6.3","depth":3,"path":"usage/rest.md","ref":"usage/rest.md","articles":[]}]},"previous":{"title":"System Interface","level":"1.3.4","depth":2,"path":"usage/systeminterface.md","ref":"usage/systeminterface.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"usage/python_java.md","mtime":"2017-05-11T00:21:44.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-11T01:53:31.596Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
