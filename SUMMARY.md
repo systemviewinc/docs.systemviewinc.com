@@ -8,6 +8,7 @@
   * [AWS F1](installation/aws.md)
 * [Guides](usage/readme.md)
   * [Getting Started](usage/getting_started.md)
+  * [User Guide](usage/user_guide.md)
   * [ZYNQ Tutorial](usage/zynq.md)
     * [Creating a Zynq Platform](usage/zynq.md)
     * [Creating the Sort Demo](usage/creating_the_sort_demo.md)
