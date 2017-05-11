@@ -1,6 +1,7 @@
 # SOFTWARE IMPORT WIZARD
 ## Introduction
 VSI software import Wizard, allows users to import C/C++ functions into the VSI dataflow environment.  The user can specify multiple source directories, a built-in C/C++ parser will parse all source files in these directories and create a list of functions the user can choose from. Once the user chooses the function associated with the block, the wizard will prefill most of the information “Arguments” tab. Figure below shows the screen shot of the Software Import Wizard. The following sections will describe the wizard and each field in greater detail.
+
 ![alt text](/img/img_user_guide/introduction.png)
 
 ## Top Level Tab
@@ -30,8 +31,10 @@ This field is used when the “__Execution Criterion__” is specified as “Tim
 ### Allocate on Local Stack:
 The vsi:runtime will create a wrapper function which calls the C/C++ function specified in the  “__C/C++ Function Name__” field. The wrapper function allocates some local variables to process the inputs and outputs of the functions. By default these variables will be allocated on the stack, on some target architectures (such as Cortex-R5) running real-time operating systems, the thread stack is limited; by unchecking this box the user can force the runtime to a declare the local variable as “***static***” which will cause them to be allocated on the global memory area.
 ## Arguments Tab
-Each argument of the function chosen in “C/C++ Function name” will be exposed as an interface of the “block” . This “tab” allows the user to specify details about the interface that are not inferred by the built-in parser.  Some fields have default values populated by the parser which the user can override. Figure 2 shows the Screen shot of the Argument Tab, the number of rows in the argument tab is determined by the “__Number of Parameters__” in the __Top Level tab__.
+Each argument of the function chosen in “C/C++ Function name” will be exposed as an interface of the “block” . This “tab” allows the user to specify details about the interface that are not inferred by the built-in parser.  Some fields have default values populated by the parser which the user can override. Figure below shows the Screen shot of the Argument Tab, the number of rows in the argument tab is determined by the “__Number of Parameters__” in the __Top Level tab__.
+
 ![alt text](/img/img_user_guide/argument_tab.png)
+
 ### C/C++ Name:
 This field is automatically updated when the function is picked in the “Top Level Tab” and is the name of the argument .
 ### C/C++ Type:
@@ -64,11 +67,11 @@ This field is not used when the “Type” is “Reference”
 ### Type:
 This field is auto filled by the parser when the function is picked in the “Top Level Tab” and represents the storage allocation attribute of the “C/C++ Type” . The choices are a) Array  b) Pointer or c) Reference .  This attribute along with the C/C++ Type is used by the VSI system compiler to generate the wrapper function for both Software & Hardware . The following table describes the behavior during runtime in a Software Context depending on the Type chosen.
 
-|Type|Direction|Wrapper Action|
-|----|---------|--------------|
-|**Array**| Input/ Inout [Execution Trigger && !Variable Length] | A local array of C/C++ Type will be allocated , the wrapper will accumulate input into the array . The user function will be ***called only when*** enough data has been received to fill the full array|
-|| Input / Inout [Execution Trigger & Variable Length]|A local array of C/C++ Type . When new data arrives on this input, the wrapper function will copy the data into the local variable and call the user function.|
-||Input [!Execution Trigger]|A local array C/C++ Type, When new data arrives on this interface the data is copied into the array. If more data arrives before the function is executed, the old data will be overwritten.|
+|**Type**|**Direction**|**Wrapper Action**|
+|-----------------|---------------|------------------|
+|**Array**| Input/ Inout [Execution Trigger && \!Variable Length] | A local array of C/C++ Type will be allocated , the wrapper will accumulate input into the array . The user function will be ***called only when*** enough data has been received to fill the full array|
+|| Input / Inout [Execution Trigger & Variable Length] | A local array of C/C++ Type . When new data arrives on this input, the wrapper function will copy the data into the local variable and call the user function.|
+||Input [!Execution Trigger] | A local array C/C++ Type, When new data arrives on this interface the data is copied into the array. If more data arrives before the function is executed, the old data will be overwritten.|
 ||Output / Inout|Data is copied from the output Array and sent to the input of the block that it is connected to.|
 |**Pointer**||Behaves the same way as Array. Note it is ***important*** to specify the Max Size of the buffer to be allocated.|
 |**Reference**||Behaves the same as a pointer|
@@ -91,6 +94,7 @@ When such an interface crosses the boundary between a Hardware & Software contex
 Both these attributes require the “LAST” attribute to be present.
 ## Advanced Tab
 Figure below shows the screen shot of the Advanced Tab. Information in this block is used to generate the Vivado HLS project when the block is placed in a Hardware Context.
+
 ![alt text](/img/img_user_guide/advanced_tab.png)
 ### Clock Period:
 This parameter will be passed to the Vivado HLS project as the requested timing.
