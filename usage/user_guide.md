@@ -79,14 +79,16 @@ This field is auto filled by the parser when the function is picked in the “To
 This field is used when the block is placed in the Hardware Context and the access type is “Sequential” . The VSI System Compiler will generate a FIFO of the given depth for each of the interfaces that has value > 0 associated with it.
 ### Sideband Attributes:
 The hls::stream Class can be used to describe a AXI Streaming interface in software.
-template<int D>
+
+`template<int D>
 struct ap_axis_dkt {
 	ap_uint<D> data;
 	ap_uint<1> last;
 	ap_uint<D/8> keep;
 	ap_uint<1> id;
 };
-hls::stream<ap_axis_dkt<32> > in;
+hls::stream<ap_axis_dkt<32> > in;`
+
 The above example shows an AXI Streaming interface with sideband signals of ID, LAST & KEEP. The sideband signals will be listed in this entry.
 When such an interface crosses the boundary between a Hardware & Software context, the VSI system compiler generates code to try to preserve the sideband signals across the interface, with some restrictions.
 - ID – is recognized in the first “beat” of the transfer, the ID will remain the same for the rest of the packet.
@@ -110,7 +112,7 @@ The hls::stream is a template class and requires a “type” to be instantiated
 `typedef unsigned int uint;
 hls::stream<uint> uistrm;`
 ## Public APIs.
-### void hls::stream<T>.write(T&);
+### void hls::stream< T\>.write(T&);
 Is blocking operation , it pushes a value into the stream .
 `uint w_uint =32;
 uistrm.write(w_uint);`
@@ -118,15 +120,15 @@ uistrm.write(w_uint);`
 The C++ “<<” operator can also be used to write data into a stream.
 
 `uistrm << w_uint;`
-### T hls::stream<T>.read();
-Is a blocking read operation , it will wait till data is available on the stream and returns the data; in the vsi::runtime implementation the calling thread is blocked from execution and will wait till some other thread puts data into the stream using hls::stream<T>.write(T&); The read operation will pop the first element from the hls::stream FIFO and return to the user.
+### T hls::stream< T\>.read();
+Is a blocking read operation , it will wait till data is available on the stream and returns the data; in the vsi::runtime implementation the calling thread is blocked from execution and will wait till some other thread puts data into the stream using hls::stream< T\>.write(T&); The read operation will pop the first element from the hls::stream FIFO and return to the user.
 
 `uint r_uint = uistrm.read();`
 
 The C++ “>>” operator can also be used to pop data from the stream FIFO.
 
 `uistrm >> r_uint;`
-### bool hls::stream<T>.write_nb(T&);
+### bool hls::stream< T\>.write_nb(T&);
 Is a non-blocking write operation, will return “true” if the write was successful else it will return “false”.
 
 `uint w_uint = 32;
@@ -135,7 +137,7 @@ if (uistrm.write_nb(w_uint)) {
 } else {
     // write fail code
 }`
-### bool hls::stream<T>.read_nb(T&);
+### bool hls::stream< T\>.read_nb(T&);
 Is the non-blocking version of the read, if data is available the function will update the reference in the argument with the values and return “true” , it will return false if the data is not available.
 `uint r_uint;
 if (uistrm.read_bd(r_uint)) {
@@ -143,9 +145,9 @@ if (uistrm.read_bd(r_uint)) {
 } else {
     // read failed no data in the stream
 }`
-### bool hls::stream<T>.full();
+### bool hls::stream< T\>.full();
 Return “true” if there is no more space in the stream to write data, return “false” if there is space.
-### bool hls::stream<T>.empty();
+### bool hls::stream< T\>.empty();
 Returns “true” if the stream is empty() , this can be used in conjunction with the read() method to implement non-blocking reads.
 ### Examples:
 #### Example 1:

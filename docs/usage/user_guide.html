@@ -862,17 +862,17 @@ This field is not used when the &#x201C;Type&#x201D; is &#x201C;Reference&#x201D
 <h3 id="buffer-depth">Buffer Depth:</h3>
 <p>This field is used when the block is placed in the Hardware Context and the access type is &#x201C;Sequential&#x201D; . The VSI System Compiler will generate a FIFO of the given depth for each of the interfaces that has value &gt; 0 associated with it.</p>
 <h3 id="sideband-attributes">Sideband Attributes:</h3>
-<p>The hls::stream Class can be used to describe a AXI Streaming interface in software.
-template<int d="">
+<p>The hls::stream Class can be used to describe a AXI Streaming interface in software.</p>
+<p><code>template&lt;int D&gt;
 struct ap_axis_dkt {
-    ap_uint<d> data;
-    ap_uint<1> last;
-    ap_uint<d 8=""> keep;
-    ap_uint<1> id;
+    ap_uint&lt;D&gt; data;
+    ap_uint&lt;1&gt; last;
+    ap_uint&lt;D/8&gt; keep;
+    ap_uint&lt;1&gt; id;
 };
-hls::stream<ap_axis_dkt<32> &gt; in;
-The above example shows an AXI Streaming interface with sideband signals of ID, LAST &amp; KEEP. The sideband signals will be listed in this entry.
-When such an interface crosses the boundary between a Hardware &amp; Software context, the VSI system compiler generates code to try to preserve the sideband signals across the interface, with some restrictions.</ap_axis_dkt<32></1></d></1></d></int></p>
+hls::stream&lt;ap_axis_dkt&lt;32&gt; &gt; in;</code></p>
+<p>The above example shows an AXI Streaming interface with sideband signals of ID, LAST &amp; KEEP. The sideband signals will be listed in this entry.
+When such an interface crosses the boundary between a Hardware &amp; Software context, the VSI system compiler generates code to try to preserve the sideband signals across the interface, with some restrictions.</p>
 <ul>
 <li>ID &#x2013; is recognized in the first &#x201C;beat&#x201D; of the transfer, the ID will remain the same for the rest of the packet.</li>
 <li>KEEP &#x2013; attribute is preserved only on the last beat of the transfer.
@@ -894,18 +894,18 @@ Figure below shows the screen shot of the Advanced Tab. Information in this bloc
 <code>typedef unsigned int uint;
 hls::stream&lt;uint&gt; uistrm;</code></p>
 <h2 id="public-apis">Public APIs.</h2>
-<h3 id="void-hlsstreamwritet">void hls::stream<t>.write(T&amp;);</t></h3>
+<h3 id="void-hlsstream-twritet">void hls::stream&lt; T&gt;.write(T&amp;);</h3>
 <p>Is blocking operation , it pushes a value into the stream .
 <code>uint w_uint =32;
 uistrm.write(w_uint);</code></p>
 <p>The C++ &#x201C;&lt;&lt;&#x201D; operator can also be used to write data into a stream.</p>
 <p><code>uistrm &lt;&lt; w_uint;</code></p>
-<h3 id="t-hlsstreamread">T hls::stream<t>.read();</t></h3>
-<p>Is a blocking read operation , it will wait till data is available on the stream and returns the data; in the vsi::runtime implementation the calling thread is blocked from execution and will wait till some other thread puts data into the stream using hls::stream<t>.write(T&amp;); The read operation will pop the first element from the hls::stream FIFO and return to the user.</t></p>
+<h3 id="t-hlsstream-tread">T hls::stream&lt; T&gt;.read();</h3>
+<p>Is a blocking read operation , it will wait till data is available on the stream and returns the data; in the vsi::runtime implementation the calling thread is blocked from execution and will wait till some other thread puts data into the stream using hls::stream&lt; T&gt;.write(T&amp;); The read operation will pop the first element from the hls::stream FIFO and return to the user.</p>
 <p><code>uint r_uint = uistrm.read();</code></p>
 <p>The C++ &#x201C;&gt;&gt;&#x201D; operator can also be used to pop data from the stream FIFO.</p>
 <p><code>uistrm &gt;&gt; r_uint;</code></p>
-<h3 id="bool-hlsstreamwritenbt">bool hls::stream<t>.write_nb(T&amp;);</t></h3>
+<h3 id="bool-hlsstream-twritenbt">bool hls::stream&lt; T&gt;.write_nb(T&amp;);</h3>
 <p>Is a non-blocking write operation, will return &#x201C;true&#x201D; if the write was successful else it will return &#x201C;false&#x201D;.</p>
 <p><code>uint w_uint = 32;
 if (uistrm.write_nb(w_uint)) {
@@ -913,7 +913,7 @@ if (uistrm.write_nb(w_uint)) {
 } else {
     // write fail code
 }</code></p>
-<h3 id="bool-hlsstreamreadnbt">bool hls::stream<t>.read_nb(T&amp;);</t></h3>
+<h3 id="bool-hlsstream-treadnbt">bool hls::stream&lt; T&gt;.read_nb(T&amp;);</h3>
 <p>Is the non-blocking version of the read, if data is available the function will update the reference in the argument with the values and return &#x201C;true&#x201D; , it will return false if the data is not available.
 <code>uint r_uint;
 if (uistrm.read_bd(r_uint)) {
@@ -921,9 +921,9 @@ if (uistrm.read_bd(r_uint)) {
 } else {
     // read failed no data in the stream
 }</code></p>
-<h3 id="bool-hlsstreamfull">bool hls::stream<t>.full();</t></h3>
+<h3 id="bool-hlsstream-tfull">bool hls::stream&lt; T&gt;.full();</h3>
 <p>Return &#x201C;true&#x201D; if there is no more space in the stream to write data, return &#x201C;false&#x201D; if there is space.</p>
-<h3 id="bool-hlsstreamempty">bool hls::stream<t>.empty();</t></h3>
+<h3 id="bool-hlsstream-tempty">bool hls::stream&lt; T&gt;.empty();</h3>
 <p>Returns &#x201C;true&#x201D; if the stream is empty() , this can be used in conjunction with the read() method to implement non-blocking reads.</p>
 <h3 id="examples">Examples:</h3>
 <h4 id="example-1">Example 1:</h4>
@@ -1062,7 +1062,7 @@ The class would typically be used as an argument to a function, and should be co
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"User Guide","level":"1.3.2","depth":2,"next":{"title":"ZYNQ Tutorial","level":"1.3.3","depth":2,"path":"usage/zynq.md","ref":"usage/zynq.md","articles":[{"title":"Creating a Zynq Platform","level":"1.3.3.1","depth":3,"path":"usage/zynq.md","ref":"usage/zynq.md","articles":[]},{"title":"Creating the Sort Demo","level":"1.3.3.2","depth":3,"path":"usage/creating_the_sort_demo.md","ref":"usage/creating_the_sort_demo.md","articles":[]}]},"previous":{"title":"Getting Started","level":"1.3.1","depth":2,"path":"usage/getting_started.md","ref":"usage/getting_started.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"usage/user_guide.md","mtime":"2017-05-11T23:51:05.232Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-11T23:51:21.299Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"User Guide","level":"1.3.2","depth":2,"next":{"title":"ZYNQ Tutorial","level":"1.3.3","depth":2,"path":"usage/zynq.md","ref":"usage/zynq.md","articles":[{"title":"Creating a Zynq Platform","level":"1.3.3.1","depth":3,"path":"usage/zynq.md","ref":"usage/zynq.md","articles":[]},{"title":"Creating the Sort Demo","level":"1.3.3.2","depth":3,"path":"usage/creating_the_sort_demo.md","ref":"usage/creating_the_sort_demo.md","articles":[]}]},"previous":{"title":"Getting Started","level":"1.3.1","depth":2,"path":"usage/getting_started.md","ref":"usage/getting_started.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"usage/user_guide.md","mtime":"2017-05-15T19:03:18.436Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-15T19:04:28.574Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

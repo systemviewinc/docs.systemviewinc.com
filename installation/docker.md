@@ -5,7 +5,7 @@ Docker is a tool that can be used to package up and sandbox applications to be r
 ## Visual System Integrator + Docker
 
 A docker container for VSI contains all the underlying dependencies required to run a VSI. It is a quicker method to test drive VSI or to programmatically install it on multiple hosts.
-In order to use the VSI container, you only need run `docker run gcr.io/systemviewinc/vsi:2016.4`.
+In order to use the VSI container, you only need run `docker run gcr.io/systemviewinc/vsi:{version_number}`.
 
 
 ### Requirements
