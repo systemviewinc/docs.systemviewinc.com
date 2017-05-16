@@ -728,6 +728,14 @@
 </ul>
 </li>
 </ul>
+<ul>
+<li>When importing the platform file into an existing system context tab, encountered with the error message &quot;<em>failed import. The design &quot;platform&quot; is not a valid vsi_system design</em>&quot;.Follow the below steps<ul>
+<li>Select the &quot;<strong>Sources</strong>&quot; tab.</li>
+<li>Select the &lt; <strong>system_context</strong> &gt; from the list in the Sources tab.</li>
+<li><code>Import Platform</code>.</li>
+</ul>
+</li>
+</ul>
 <h4 id="runtime--generated-context">Runtime / Generated Context</h4>
 <ul>
 <li>The first step should be to enable logging for runtime. VSI Runtime supports a modular logging system that can be turned on by setting the environment variables <code>VSI_LOG_LVL=info and VSI_LOG_COMPS=all</code>. For the full set of valid values, <a href="../runtime/logging">see logging section</a></li>
@@ -751,15 +759,6 @@
 <li><p>Build errors on <code>Flow-&gt;Build Software Contexts</code></p>
 <ul>
 <li>When switching between a cross compile and host compile for a context, even when &quot;clean and rebuild&quot; is selected, the switched context still has a toolchain file and CMake may attempt to use it when compiling. The fix is to delete the context directory under <code>&lt;project&gt;/vsi_auto_gen/sw</code> and regenerate the context using <code>generate system</code>. After which the build should use the correct compiler.</li>
-</ul>
-</li>
-</ul>
-<h4 id="import-platform">Import platform</h4>
-<ul>
-<li>When importing the platform file into an existing system context tab, encountered with the error message &quot;<em>failed import. The design &quot;platform&quot; is not a valid vsi_system design</em>&quot;.Follow the below steps<ul>
-<li>Select the &quot;<strong>Sources</strong>&quot; tab.</li>
-<li>Select the &lt; <strong>system_context</strong> &gt; from the list in the Sources tab.</li>
-<li><code>Import Platform</code>.</li>
 </ul>
 </li>
 </ul>
@@ -806,7 +805,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Troubleshooting","level":"1.5","depth":1,"next":{"title":"Releases","level":"1.6","depth":1,"path":"releases.md","ref":"releases.md","articles":[]},"previous":{"title":"Features","level":"1.4","depth":1,"path":"features/readme.md","ref":"features/readme.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"troubleshooting/readme.md","mtime":"2017-05-16T17:36:43.819Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-16T17:36:58.141Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Troubleshooting","level":"1.5","depth":1,"next":{"title":"Releases","level":"1.6","depth":1,"path":"releases.md","ref":"releases.md","articles":[]},"previous":{"title":"Features","level":"1.4","depth":1,"path":"features/readme.md","ref":"features/readme.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"troubleshooting/readme.md","mtime":"2017-05-16T17:55:44.846Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-16T17:56:32.024Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
