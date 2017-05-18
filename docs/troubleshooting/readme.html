@@ -729,10 +729,35 @@
 </li>
 </ul>
 <ul>
-<li>When importing the platform file into an existing system context tab, encountered with the error message &quot;<em>failed import. The design &quot;platform&quot; is not a valid vsi_system design</em>&quot;.Follow the below steps<ul>
+<li><p>When importing the platform file into an existing system context tab, encountered with the error message &quot;<em>failed import. The design &quot;platform&quot; is not a valid vsi_system design</em>&quot;.Follow the below steps</p>
+<ul>
 <li>Select the &quot;<strong>Sources</strong>&quot; tab.</li>
 <li>Select the &lt; <strong>system_context</strong> &gt; from the list in the Sources tab.</li>
 <li><code>Import Platform</code>.</li>
+</ul>
+</li>
+<li><p>Modifying TCP server settings for data type and package size is not editable in input and output blocks</p>
+<ul>
+<li>uncheck and re-check the check box for the input and output, then the fields will be editable.</li>
+</ul>
+</li>
+<li><p>when creating platform for a particular speed grade part using the create_zync_platform.tcl script the default part value is set to xc7z020clg400-2.</p>
+<ul>
+<li>Edit vsi_create_zynq_platform.tcl file to the corresponding part of the speed grade.</li>
+</ul>
+</li>
+<li><p>User constraints is not been applied due to the default user constraints in Vivado.</p>
+<ul>
+<li>After encountering with the error edit the file mentioned in the error according to the required constraints to the user.</li>
+<li>For example: When a Project with x86 and PCIe is created user constraints. Disable the 4 constraints regarding the pcie lane location and add the required ones.</li>
+</ul>
+</li>
+<li><p>Crashing of the software executable due to insufficient FIFO size.</p>
+<ul>
+<li>For example: The system consists of a x86 PC and a FPGA connected over PCIe. The system consists 2 tcp Servers and a customized VHDL IP, see image. When more than 4096Bytes are sent to the hardware at ones, the Software executable crashed.
+  <img src="../img/img_troubleshoot/Crashing_software_1.jpg" alt="alt text"></li>
+<li>In the generated vivado Project, open the Blockdesign, search for the vc707 block and open. There is a FIFO Block located near the input and output of the custom VHDL IP. Adjust the FIFO size to be larger then the max. possible input packet size.
+  <img src="../img/img_troubleshoot/Crashing_software_2.jpg" alt="alt text"></li>
 </ul>
 </li>
 </ul>
@@ -805,7 +830,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Troubleshooting","level":"1.5","depth":1,"next":{"title":"Releases","level":"1.6","depth":1,"path":"releases.md","ref":"releases.md","articles":[]},"previous":{"title":"Features","level":"1.4","depth":1,"path":"features/readme.md","ref":"features/readme.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"troubleshooting/readme.md","mtime":"2017-05-16T17:55:44.846Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-16T17:56:32.024Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Troubleshooting","level":"1.5","depth":1,"next":{"title":"Releases","level":"1.6","depth":1,"path":"releases.md","ref":"releases.md","articles":[]},"previous":{"title":"Features","level":"1.4","depth":1,"path":"features/readme.md","ref":"features/readme.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga"],"styles":{"website":"style.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-90334039-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Visual System Integrator","gitbook":"*"},"file":{"path":"troubleshooting/readme.md","mtime":"2017-05-18T00:09:07.953Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-18T00:10:01.333Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
