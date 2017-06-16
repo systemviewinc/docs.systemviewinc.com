@@ -12,13 +12,13 @@
 			"gitbookConfigURL": "https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/book.json",
 			"options": [
 				{
-					"value": "http://docs.systemviewinc.com/2017.1/",
-					"text": "2017.1",
-					"selected": true
+					"value": "/2017.1",
+					"text": "2017.1"
 				},
 				{
-					"value": "http://docs.systemviewinc.com/2017.2/",
-					"text": "2017.2-alpha"
+					"value": "/2017.2",
+					"text": "2017.2-alpha",
+					"selected": true
 				}
 			]
 		},
