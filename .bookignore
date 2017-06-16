@@ -1,3 +1,7 @@
+.bookignore
+.gitignore
 CNAME
 docs
 Makefile
+assets/favicons
+vsi_manual.*

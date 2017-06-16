@@ -1,10 +1,9 @@
 {
 	"title": "Documentation | Visual System Integrator",
-	"output": "docs/2017.2",
 	"styles": {
 		"website": "style.css"
 	},
-	"plugins": ["ga", "versions"],
+	"plugins": ["ga", "versions", "bring-yer-favicon"],
 	"pluginsConfig": {
 		"ga": {
 			"token": "UA-90334039-2"
@@ -22,6 +21,12 @@
 					"text": "2017.2-alpha"
 				}
 			]
+		},
+		"bring-yer-favicon": {
+			"favicons": {
+				"favicon.ico": "assets/favicons/favicon.ico",
+				"apple-touch-icon-precomposed-152.png": "assets/favicons/apple-touch-icon-precomposed-152.png"
+			}
 		}
 	}
 }

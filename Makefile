@@ -1,8 +1,8 @@
 STAGING_DIR ?= ./
+DEFAULT_VERSION=2017.1
 
-build:
-	gitbook build . docs
-	git checkout docs/gitbook/images/
+build: gb_install
+	gitbook build . docs/$(DEFAULT_VERSION)
 
 gb_install:
 	gitbook install
