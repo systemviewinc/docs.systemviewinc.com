@@ -15,7 +15,7 @@ NoMachine client can be configured to use the same private key that you configur
 Press connect and wait. It might take a minute or two to establish the connection. If you see a prompt asking if a new X-server should be launched, select yes.
 
 #### Footnotes
-1. [Visual System Integrator at AWS Marketplace](https://aws.amazon.com/marketplace/)
+1. [Visual System Integrator at AWS Marketplace](https://aws.amazon.com/marketplace/pp/B071Z6QDFP)
 1. On how to launch an AWS EC2 instance, [see here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/LaunchingAndUsingInstances.html)
 1. [Getting started with NoMachine](https://www.nomachine.com/getting-started-with-nomachine)
 1. [SSH key based authentication using NoMachine](https://www.nomachine.com/AR02L00785)
