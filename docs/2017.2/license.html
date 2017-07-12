@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Releases · Documentation | Visual System Integrator</title>
+        <title>Licensing · Documentation | Visual System Integrator</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -53,10 +53,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="reference/readme.md" />
+    <link rel="next" href="usage/readme.html" />
     
     
-    <link rel="prev" href="troubleshooting/readme.html" />
+    <link rel="prev" href="installation/aws.html" />
     
 
     </head>
@@ -164,7 +164,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="license.html">
+        <li class="chapter active" data-level="1.2.5" data-path="license.html">
             
                 <a href="license.html">
             
@@ -427,7 +427,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6" data-path="releases.html">
+        <li class="chapter " data-level="1.6" data-path="releases.html">
             
                 <a href="releases.html">
             
@@ -722,7 +722,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Releases</a>
+        <a href="." >Licensing</a>
     </h1>
 </div>
 
@@ -737,8 +737,17 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="files-for-manual-install-follow-the-instructions-for-your-host-type-in-installation">Files for Manual Install (follow the instructions for your host type in <a href="installation">installation</a>):</h3>
-<p><a href="http://systemviewinc.com/download.html" target="_blank">System View Download Area</a></p>
+                                <h2 id="licensing">Licensing</h2>
+<p>Make sure that you have a working installation before following the steps in this section.</p>
+<p>While designing a system using VSI drag and drop interface is free; generating a system requires a license. We provide a simple and automatic evaluation license for each new installation. The license is initially valid for 30 days and can be extended up-to 90 days.</p>
+<p>In order to manage license, use the Visual System integrator launcher tool (<code>vsi</code> or <code>vsi.exe</code>)</p>
+<p>The following commands are supported:</p>
+<pre><code>vsi -L, --license             query license status
+vsi -r, --refresh-license     refreshes the existing license period. The license needs to be active before it can be refreshed
+vsi -R, --request-license     request an evaluation license for this node
+</code></pre><p>After the installation on a new machine that doesn&apos;t have a license, use the <code>vsi -R</code> to request an evaluation license. Please fill the fields as accurately as possible as it will help our support staff to facilitate an extension of the evaluation license later, should you request it. The extension can be requested using <a href="https://systemviewinc.com/license.html" target="_blank">this form</a> (make sure that you use the same <code>Name</code> and <code>Company</code> fields. The existing license can be queried using <code>vsi -L</code>). Note that the initial 30 day license can only be requested for a machine that has never been issued a license before. (contact us using the license form if you need an extension)</p>
+<p>Once the fields are filled, the information is used to automatically provision a license.
+Later, if the license was extended (either due to evaluation extension or paid conversion), the updated license can be refreshed using <code>vsi -r</code>. This will download the updated license and install it.</p>
 
                                 
                                 </section>
@@ -766,12 +775,12 @@
 
             
                 
-                <a href="troubleshooting/readme.html" class="navigation navigation-prev " aria-label="Previous page: Troubleshooting">
+                <a href="installation/aws.html" class="navigation navigation-prev " aria-label="Previous page: AWS F1">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="reference/readme.md" class="navigation navigation-next " aria-label="Next page: Reference">
+                <a href="usage/readme.html" class="navigation navigation-next " aria-label="Next page: Guides">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -782,7 +791,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Releases","level":"1.6","depth":1,"next":{"title":"Reference","level":"1.7","depth":1,"path":"reference/readme.md","ref":"reference/readme.md","articles":[{"title":"Development Workflow","level":"1.7.1","depth":2,"path":"workflow.md","ref":"workflow.md","articles":[]},{"title":"VSI Runtime","level":"1.7.2","depth":2,"path":"runtime/readme.md","ref":"runtime/readme.md","articles":[{"title":"Runtime","level":"1.7.2.1","depth":3,"path":"runtime/runtime.md","ref":"runtime/runtime.md","articles":[]},{"title":"Custom","level":"1.7.2.2","depth":3,"path":"runtime/custom.md","ref":"runtime/custom.md","articles":[]},{"title":"Inout","level":"1.7.2.3","depth":3,"path":"runtime/inout.md","ref":"runtime/inout.md","articles":[]},{"title":"Tcp Server","level":"1.7.2.4","depth":3,"path":"runtime/tcp_server.md","ref":"runtime/tcp_server.md","articles":[]},{"title":"Tcp Client","level":"1.7.2.5","depth":3,"path":"runtime/tcp_client.md","ref":"runtime/tcp_client.md","articles":[]},{"title":"Net","level":"1.7.2.6","depth":3,"path":"runtime/net.md","ref":"runtime/net.md","articles":[]},{"title":"Interconnect","level":"1.7.2.7","depth":3,"path":"runtime/interconnect.md","ref":"runtime/interconnect.md","articles":[]},{"title":"Connect","level":"1.7.2.8","depth":3,"path":"runtime/connect.md","ref":"runtime/connect.md","articles":[]},{"title":"Log","level":"1.7.2.9","depth":3,"path":"runtime/log.md","ref":"runtime/log.md","articles":[]},{"title":"Buffer","level":"1.7.2.10","depth":3,"path":"runtime/buffer.md","ref":"runtime/buffer.md","articles":[]},{"title":"hls::stream","level":"1.7.2.11","depth":3,"path":"runtime/hlsstream.md","ref":"runtime/hlsstream.md","articles":[]}]},{"title":"Logging","level":"1.7.3","depth":2,"path":"usage/logging.md","ref":"usage/logging.md","articles":[]},{"title":"Command Line","level":"1.7.4","depth":2,"path":"usage/commandline.md","ref":"usage/commandline.md","articles":[]},{"title":"Advanced","level":"1.7.5","depth":2,"path":"advanced/readme.md","ref":"advanced/readme.md","articles":[{"title":"Templates","level":"1.7.5.1","depth":3,"path":"templates/index.md","ref":"templates/index.md","articles":[]}]}]},"previous":{"title":"Troubleshooting","level":"1.5","depth":1,"path":"troubleshooting/readme.md","ref":"troubleshooting/readme.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon"],"styles":{"website":"style.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2","selected":true}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"releases.md","mtime":"2017-04-12T21:36:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-12T18:57:28.683Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Licensing","level":"1.2.5","depth":2,"next":{"title":"Guides","level":"1.3","depth":1,"path":"usage/readme.md","ref":"usage/readme.md","articles":[{"title":"Getting Started","level":"1.3.1","depth":2,"path":"usage/getting_started.md","ref":"usage/getting_started.md","articles":[]},{"title":"User Guide","level":"1.3.2","depth":2,"path":"usage/user_guide.md","ref":"usage/user_guide.md","articles":[]},{"title":"ZYNQ Tutorial","level":"1.3.3","depth":2,"path":"usage/zynq.md","ref":"usage/zynq.md","articles":[{"title":"Creating a Zynq Platform","level":"1.3.3.1","depth":3,"path":"usage/zynq.md","ref":"usage/zynq.md","articles":[]},{"title":"Creating the Sort Demo","level":"1.3.3.2","depth":3,"path":"usage/creating_the_sort_demo.md","ref":"usage/creating_the_sort_demo.md","articles":[]}]},{"title":"VC709 Tutorial","level":"1.3.4","depth":2,"path":"usage/vc709.md","ref":"usage/vc709.md","articles":[{"title":"Creating a VC709 Platform for packet processing","level":"1.3.4.1","depth":3,"path":"usage/vc709.md","ref":"usage/vc709.md","articles":[]},{"title":"Creating a Packet Processor","level":"1.3.4.2","depth":3,"path":"usage/vc709_packet.md","ref":"usage/vc709_packet.md","articles":[]}]},{"title":"System Interface","level":"1.3.5","depth":2,"path":"usage/systeminterface.md","ref":"usage/systeminterface.md","articles":[]},{"title":"Python and Java","level":"1.3.6","depth":2,"path":"usage/python_java.md","ref":"usage/python_java.md","articles":[]},{"title":"Interfacing with External Systems","level":"1.3.7","depth":2,"path":"usage/external_interface.md","ref":"usage/external_interface.md","articles":[{"title":"Using API","level":"1.3.7.1","depth":3,"path":"usage/api.md","ref":"usage/api.md","articles":[]},{"title":"Using TCP Ports","level":"1.3.7.2","depth":3,"path":"usage/tcp.md","ref":"usage/tcp.md","articles":[]},{"title":"Using RESTful Endpoints","level":"1.3.7.3","depth":3,"path":"usage/rest.md","ref":"usage/rest.md","articles":[]}]}]},"previous":{"title":"AWS F1","level":"1.2.4","depth":2,"path":"installation/aws.md","ref":"installation/aws.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon"],"styles":{"website":"style.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2","selected":true}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"license.md","mtime":"2017-07-12T18:54:34.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-12T18:57:28.683Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

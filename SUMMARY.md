@@ -6,6 +6,7 @@
   * [Windows](installation/windows.md)
   * [Docker](installation/docker.md)
   * [AWS F1](installation/aws.md)
+  * [Licensing](license.md)
 * [Guides](usage/readme.md)
   * [Getting Started](usage/getting_started.md)
   * [User Guide](usage/user_guide.md)

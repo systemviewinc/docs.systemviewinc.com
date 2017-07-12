@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Docker · Documentation | Visual System Integrator</title>
+        <title>Installation · Documentation | Visual System Integrator</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -53,10 +53,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="aws.html" />
+    <link rel="next" href="linux.html" />
     
     
-    <link rel="prev" href="windows.html" />
+    <link rel="prev" href="../" />
     
 
     </head>
@@ -98,7 +98,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="readme.html">
+        <li class="chapter active" data-level="1.2" data-path="readme.html">
             
                 <a href="readme.html">
             
@@ -138,7 +138,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.3" data-path="docker.html">
+        <li class="chapter " data-level="1.2.3" data-path="docker.html">
             
                 <a href="docker.html">
             
@@ -722,7 +722,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Docker</a>
+        <a href=".." >Installation</a>
     </h1>
 </div>
 
@@ -737,52 +737,39 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="about-docker">About Docker</h3>
-<p>Docker is a tool that can be used to package up and sandbox applications to be run at any host for which docker runtime is available. As of now, docker runtime is available for Windows, Linux and MacOS.</p>
-<h2 id="visual-system-integrator--docker">Visual System Integrator + Docker</h2>
-<p>A docker container for VSI contains all the underlying dependencies required to run a VSI. It is a quicker method to test drive VSI or to programmatically install it on multiple hosts.
-In order to use the VSI container, you only need run <code>docker run gcr.io/systemviewinc/vsi:{version_number}</code>.</p>
-<h3 id="requirements">Requirements</h3>
+                                <h2 id="overview">Overview</h2>
+<p>Visual System Integrator installation is supported on Windows and Linux.</p>
+<p>In addition an <b>Amazon AWS AMI</b> is also provided (with an alternative licensing model<sup>pay per hour</sup>) which can be used independently or in combination with AWS F1 FPGA Instances.</p>
+<p>We also have a prebuilt <b>Docker image</b> <sup>(beta)</sup> which can be used on MacOS.</p>
+<h2 id="requirements-excluding-amazon-aws-ami">Requirements (excluding Amazon AWS AMI)</h2>
+<p>Before you start, make sure that your system meets the minimum hardware requirements as below:</p>
+<h3 id="hardware-requirements">Hardware Requirements:</h3>
 <ul>
-<li>Docker: <a href="https://docker.com" target="_blank">Download here</a><sup>1</sup></li>
-<li>MacOS only: resize preallocated docker disk size to 110GB or more. <a href="../docker/docker_reszize">instructions</a></li>
+<li>Dual core Intel Processor (quad-core or better recommended)</li>
+<li>4GB of RAM (8GB or more recommended)</li>
+<li>50GB of free disk space for Vivado installation (this does not apply if you already have a recent Vivado installation 2016.4 or above).</li>
 </ul>
-<h4 id="pull-visual-system-integrator">Pull Visual System Integrator</h4>
-<p>Run <code>docker pull gcr.io/systemviewinc/vsi:{version_number}</code> and wait for the download to complete.</p>
-<blockquote>
-<p>Warning: This will download 50GB+ of data. Make sure that you are on a fast connection.</p>
-</blockquote>
-<h4 id="docker--visual-system-integrator-getting-started">Docker + Visual System Integrator getting started</h4>
-<ol>
-<li>Run <code>docker run --privileged -dP -e 1920x1080 -v /home/{USER}/{some projects directory to map}:/projects gcr.io/systemviewinc/vsi:{version_number}</code><sup>2</sup> <sup>3</sup>
-An instance of VSI docker container will start in detached mode. The returned hash is the container ID.</li>
-<li>Run <code>docker port &lt;container ID&gt;</code>. This will return port numbers.</li>
-<li>Use a VNC client to connect to VSI. The connection should be made to <code>localhost:&lt;port mapped to 5901&gt;</code>(MacOS comes with a preinstalled VNC client <code>Screen Sharing</code>).<sup>4</sup></li>
-<li>Optional: Another mapped port to ssh is available if commandline access is desired. Use the port mapped to 22 in previous steps. <code>ssh localhost -p &lt;port mapped to 22&gt;</code><sup>4</sup></li>
-</ol>
-<h4 id="licensing">Licensing</h4>
-<ol>
-<li>Open a command prompt inside the VSI container and use <code>ip address</code> to get the MAC Address.</li>
-<li>Use the form <a href="http://systemviewinc.com/license.html" target="_blank">here</a> to request a license.</li>
-<li>The license file, once received, can be used by <code>docker cp vsi.lic.&lt;ethernet Address&gt; &lt;container id&gt;:/opt/Systemview/VSI/{version_number}/</code>. This will copy the file to the VSI container.</li>
-</ol>
-<h4 id="usage">Usage</h4>
-<ol>
-<li>Connect to the container using VNC.</li>
-<li>Open a terminal and issue the command <code>vsi</code>. If the installation was successful then you should see text similar to this:<ul>
-<li><code>Visual System Integrator version: V2017.1_HEAD-29-gdc85abc, Compiler: &quot;GNU - 5.4.0 20160609&quot;, Buildhost: &quot;nanl - Linux-4.4.0-72-generic&quot;, Date: 2017-04-07T17:24:29</code><br><code>loading Visual System Integrator...</code></li>
+<h3 id="software-requirements">Software Requirements:</h3>
+<ul>
+<li>Vivado HLx System Edition 2016.4 or newer: <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html" target="_blank">Download here (registration required)</a></li>
+<li>Xilinx SDK (Only required if it wasn&apos;t previously selected during Vivado Installation): <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html" target="_blank">Download here (registration required)</a></li>
+</ul>
+<h3 id="before-you-begin">Before you begin</h3>
+<p>Download installation files for Visual System Integrator. Choose the version that corresponds to the Vivado version that you have installed.</p>
+<ul>
+<li>VSI installation files are available for:<ul>
+<li>Download link for <a href="https://systemviewinc.com/download.html" target="_blank">Visual System Integrator 2016.4 or newer (works with corresponding Vivado HLs System Edition 2016.4 or newer)</a></li>
 </ul>
 </li>
-<li>If you don&apos;t see similar text then see <a href="../troubleshooting">Troubleshooting</a></li>
-</ol>
-<h1 id="footnotes">Footnotes</h1>
-<ol>
-<li>Only required if docker wasn&apos;t previously installed.</li>
-<li>1920x1080 can be replaced with your native display resolution.</li>
-<li>The <code>-v</code> switch can be used to map a local directory to a path inside the docker container. This can be used as the project directory or to save important user data that has to outlive the life of the docker container.</li>
-<li>The password is <code>systemview</code></li>
-<li>VSI can be started without a valid license. All functionality works except the ability to generate projects.</li>
-</ol>
+<li>License for Visual System Integrator <a href="http://systemviewinc.com/license.html" target="_blank">request one here</a>.</li>
+</ul>
+<h3 id="host-specific-instructions">Host specific instructions</h3>
+<ul>
+<li><a href="windows.html">Windows</a></li>
+<li><a href="linux.html">Linux</a></li>
+<li><a href="aws.html">Amazon AWS</a></li>
+<li><a href="docker.html">Docker</a></li>
+</ul>
 
                                 
                                 </section>
@@ -810,12 +797,12 @@ An instance of VSI docker container will start in detached mode. The returned ha
 
             
                 
-                <a href="windows.html" class="navigation navigation-prev " aria-label="Previous page: Windows">
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="aws.html" class="navigation navigation-next " aria-label="Next page: AWS F1">
+                <a href="linux.html" class="navigation navigation-next " aria-label="Next page: Linux">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -826,7 +813,7 @@ An instance of VSI docker container will start in detached mode. The returned ha
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Docker","level":"1.2.3","depth":2,"next":{"title":"AWS F1","level":"1.2.4","depth":2,"path":"installation/aws.md","ref":"installation/aws.md","articles":[]},"previous":{"title":"Windows","level":"1.2.2","depth":2,"path":"installation/windows.md","ref":"installation/windows.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon"],"styles":{"website":"style.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2","selected":true}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"installation/docker.md","mtime":"2017-05-24T00:38:11.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-12T18:57:28.683Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Installation","level":"1.2","depth":1,"next":{"title":"Linux","level":"1.2.1","depth":2,"path":"installation/linux.md","ref":"installation/linux.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"readme.md","ref":"readme.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon"],"styles":{"website":"style.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2","selected":true}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"installation/readme.md","mtime":"2017-05-10T20:50:26.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-12T18:57:28.683Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
