@@ -19,6 +19,10 @@
 					"value": "/2017.2",
 					"text": "2017.2",
 					"selected": true
+				},
+				{
+					"value": "/dev",
+					"text": "dev"
 				}
 			]
 		},
