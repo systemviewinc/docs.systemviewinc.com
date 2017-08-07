@@ -16,6 +16,7 @@
   * [VC709 Tutorial](usage/vc709.md)
     * [Creating a VC709 Platform for packet processing](usage/vc709.md)
     * [Creating a Packet Processor](usage/vc709_packet.md)
+  * [Simulation](usage/simulation.md)
   * [System Interface](usage/systeminterface.md)
   * [Python and Java](usage/python_java.md)
   * [Interfacing with External Systems](usage/external_interface.md)
