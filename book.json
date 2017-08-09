@@ -3,7 +3,7 @@
 	"styles": {
 		"website": "style.css"
 	},
-	"plugins": ["ga", "versions", "bring-yer-favicon"],
+	"plugins": ["ga", "versions", "bring-yer-favicon", "block-align"],
 	"pluginsConfig": {
 		"ga": {
 			"token": "UA-90334039-2"
@@ -26,6 +26,7 @@
 				}
 			]
 		},
+		"block-align" : {},
 		"bring-yer-favicon": {
 			"favicons": {
 				"favicon.ico": "assets/favicons/favicon.ico",
