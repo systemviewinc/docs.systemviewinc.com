@@ -74,12 +74,18 @@ Open Software Context (double click at the empty space in software context)
 Add "VSI Software Import Wizard" IP component.
 Open Re-customize IP window (double click) at the source directory, select path to vsi/staging/target/common/hls_examples/memory and press Refresh.
 Set the following parameters:
+<<<<<<< HEAD
 - Function : read_file_send
 	- Arg1 Direction : output
+=======
+-Function : read_file_send
+-Arg1 Direction : output
+>>>>>>> 39ee61dfe3486a0735ccaa105c6ddfcbfc3e5354
 
 {% center %} ![alt text](/img/simulation/13_SoftWizard_readFile.png) {% endcenter %}
 
 Create VSI Software IP component with the following parameters:
+<<<<<<< HEAD
 - Function : recv_write_file
 	- Arg1 Direction : input
 
@@ -88,6 +94,16 @@ Create VSI Software IP component with the following parameters:
 - Function : process_data
 	- Arg1 (in_s) Direction : input
 	- Arg2 (out_s) Direction : output
+=======
+-Function : recv_write_file
+	-Arg1 Direction : input
+
+
+Create VSI Software IP component with the following parameters:
+-Function : process_data
+	-Arg1 (in_s) Direction : input
+	-Arg2 (out_s) Direction : output
+>>>>>>> 39ee61dfe3486a0735ccaa105c6ddfcbfc3e5354
 
 {% center %} ![alt text](/img/simulation/14_SoftwareIP_process_data.png) {% endcenter %}
 
@@ -106,10 +122,17 @@ From system diagram drag and drop process ip block to the simulation context spa
 Now process is located at the hardware simulation context.
 
 System generation 
+<<<<<<< HEAD
 - Compile platform : ***menu bar -> Flow -> Compile Platform***
 - Generate system : ***menu bar -> Flow -> Import Platform***
 - Build HLS system : ***menu bar -> Flow -> Build HLS***
 - Build Software : ***menu bar -> Flow -> Build HLS***
+=======
+Compile platform : ***menu bar -> Flow -> Compile Platform***
+Generate system : ***menu bar -> Flow -> Import Platform***
+Build HLS system : ***menu bar -> Flow -> Build HLS***
+Build Software : ***menu bar -> Flow -> Build HLS***
+>>>>>>> 39ee61dfe3486a0735ccaa105c6ddfcbfc3e5354
 
 ##Run Simulation
 
@@ -118,9 +141,14 @@ Open Xilinx Vivado and execute script <project_location>/vsi_auto_gen/hw/hardwar
 Go to <project_location>/vsi_auto_gen/sw/system_1/build/soft_context
 
 Generate test file
+<<<<<<< HEAD
 ```
 dd if=/dev/random of=infile.txt bs=1 count=64
 ```
+=======
+dd if=/dev/random of=infile.txt bs=1 count=64
+
+>>>>>>> 39ee61dfe3486a0735ccaa105c6ddfcbfc3e5354
 Launch simulation from Vivado.
 ***menu bar -> Flow -> Run Simulation -> Run Behavioral Simulation***
 
@@ -134,7 +162,11 @@ Run simulation
 Start program from the command line
 
 Go to project_location/vsi_auto_gen/sw/system_1/build/soft_context and run the program:
+<<<<<<< HEAD
 ```./bin/soft_context```
+=======
+./bin/soft_context
+>>>>>>> 39ee61dfe3486a0735ccaa105c6ddfcbfc3e5354
 In this example input file (infile.txt) has to be located in the directory where generic program is executed.  
 
 Break simulation
