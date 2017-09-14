@@ -16,7 +16,6 @@ OUT_JSON := $(subst ___OPTIONS___,$(DOCS_JSON_LIST),$(IN_JSON))
 
 all: build pdf epub
 	@echo "Building docs"
-	@rm -f book.json
 
 clean:
 	rm -f book.json
