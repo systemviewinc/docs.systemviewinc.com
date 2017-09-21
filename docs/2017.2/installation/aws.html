@@ -21,6 +21,10 @@
                 
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-block-align/plugin.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -98,9 +102,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="readme.html">
+        <li class="chapter " data-level="1.2" data-path="readme.md">
             
-                <a href="readme.html">
+                <span>
             
                     
                     Installation
@@ -312,7 +316,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" data-path="../usage/systeminterface.html">
+        <li class="chapter " data-level="1.3.5" data-path="../usage/simulation.html">
+            
+                <a href="../usage/simulation.html">
+            
+                    
+                    Simulation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../usage/systeminterface.html">
             
                 <a href="../usage/systeminterface.html">
             
@@ -325,7 +342,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.6" data-path="../usage/python_java.html">
+        <li class="chapter " data-level="1.3.7" data-path="../usage/python_java.html">
             
                 <a href="../usage/python_java.html">
             
@@ -338,7 +355,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.7" data-path="../usage/external_interface.html">
+        <li class="chapter " data-level="1.3.8" data-path="../usage/external_interface.html">
             
                 <a href="../usage/external_interface.html">
             
@@ -352,7 +369,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.7.1" data-path="../usage/api.html">
+        <li class="chapter " data-level="1.3.8.1" data-path="../usage/api.html">
             
                 <a href="../usage/api.html">
             
@@ -365,7 +382,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.7.2" data-path="../usage/tcp.html">
+        <li class="chapter " data-level="1.3.8.2" data-path="../usage/tcp.html">
             
                 <a href="../usage/tcp.html">
             
@@ -378,7 +395,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.7.3" data-path="../usage/rest.html">
+        <li class="chapter " data-level="1.3.8.3" data-path="../usage/rest.html">
             
                 <a href="../usage/rest.html">
             
@@ -741,21 +758,33 @@
 <h4 id="requirements">Requirements</h4>
 <ul>
 <li>An active AWS account with billing and the ability to launch paid instance.</li>
-<li>For Graphical User Interface, a local installation of NoMachine Client on the local computer. (<a href="https://www.nomachine.com" target="_blank">Download here</a>)</li>
+<li>For Graphical User Interface, a Web Browser or a VNC Client</li>
 <li>While we set no restrictions on the type of instance that VSI runs on, for best use experience, we recommend using an instance with 8+ virtual cores and 30GB+ of RAM.</li>
 <li>In order to reduce User Interface lag, a fast connection to the internet is highly desirable.</li>
 </ul>
 <h4 id="launching-visual-system-integrator-on-aws">Launching Visual System Integrator on AWS</h4>
 <p>Launch a VSI FPGA Developer Instance using AWS console or cli tool.<sup>1, 2</sup></p>
-<p>Once the the instance is running, launch the NoMachine client and configure it to connect to the public DNS name or IP of the instance.<sup>3</sup></p>
-<p>NoMachine client can be configured to use the same private key that you configured when you launched the instance<sup>4</sup>.
-Press connect and wait. It might take a minute or two to establish the connection. If you see a prompt asking if a new X-server should be launched, select yes.</p>
+<p>Once the the instance is running, connect to the instance using an ssh client <sup>3</sup>.</p>
+<p>NOTE: The first login will take a while due to the AWS EC2 F1 HDK Shell initialization. Please be patient. When the initialization is complete, the machine has to be rebooted once for the graphical session to work. (hint: <code>sudo reboot</code> from the ssh client)</p>
+<p>To use VSI in graphical mode with a web browser, the instance&apos;s port 80 has to be forwarded to a local port. Use the following syntax with the command line ssh client to do that (for putty or other SSH clients, consult it&apos;s user manual):</p>
+<p><code>ssh -L 8080:localhost:80 centos@&lt;instance DNS name or IP Address&gt;</code></p>
+<p>NOTE: Ensure that the local port 8080 is not being used by another. If it is, then replace 8080 with 8081 or any other free port.</p>
+<p>Once the ssh client has connected, open a web browser to the following URI <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>. The default password for the VNC is <code>systemview</code>. Since the VNC session is tunneled through the SSH session, the password need not be changed. If you decide to change it, use the command <code>vncpasswd</code> from the ssh client to change it.</p>
+<p>Similarly, to connect using a dedicated VNC client, the following syntax can be used:</p>
+<p><code>ssh -L 5901:localhost:5901 centos@&lt;instance DNS name or IP Address&gt;</code></p>
+<p>Once connected, use the <code>localhost:5901</code> in your VNC Client to open the Graphical session.</p>
+<p>For walk throughs and guides, consult the <a href="https://systemviewinc.com/docs" target="_blank">Visual System Integrator docs</a>.</p>
+<h4 id="notes-on-security">Notes on Security:</h4>
+<ul>
+<li>The graphical session is tunneled through the SSH tunnel.</li>
+<li>The default password for the graphical session is <code>systemview</code></li>
+<li>The password can be changed using <code>vncpasswd</code> from the ssh client.</li>
+</ul>
 <h4 id="footnotes">Footnotes</h4>
 <ol>
 <li><a href="https://aws.amazon.com/marketplace/pp/B071Z6QDFP" target="_blank">Visual System Integrator at AWS Marketplace</a></li>
-<li>On how to launch an AWS EC2 instance, <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/LaunchingAndUsingInstances.html" target="_blank">see here</a></li>
-<li><a href="https://www.nomachine.com/getting-started-with-nomachine" target="_blank">Getting started with NoMachine</a></li>
-<li><a href="https://www.nomachine.com/AR02L00785" target="_blank">SSH key based authentication using NoMachine</a></li>
+<li><a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/LaunchingAndUsingInstances.html" target="_blank">AWS: Launch an AWS EC2 instance</a></li>
+<li><a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html" target="_blank">AWS: Connecting to Your Linux Instance Using SSH</a></li>
 </ol>
 
                                 
@@ -800,7 +829,7 @@ Press connect and wait. It might take a minute or two to establish the connectio
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AWS F1","level":"1.2.4","depth":2,"next":{"title":"Licensing","level":"1.2.5","depth":2,"path":"license.md","ref":"license.md","articles":[]},"previous":{"title":"Docker","level":"1.2.3","depth":2,"path":"installation/docker.md","ref":"installation/docker.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon"],"styles":{"website":"style.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/master/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2","selected":true}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"installation/aws.md","mtime":"2017-07-12T18:55:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-12T18:57:28.683Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AWS F1","level":"1.2.4","depth":2,"next":{"title":"Licensing","level":"1.2.5","depth":2,"path":"license.md","ref":"license.md","articles":[]},"previous":{"title":"Docker","level":"1.2.3","depth":2,"path":"installation/docker.md","ref":"installation/docker.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon","block-align"],"styles":{"website":"style.css"},"pluginsConfig":{"block-align":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/master/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2","selected":true},{"value":"/2017.3","text":"2017.3"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"installation/aws.md","mtime":"2017-09-21T19:47:13.731Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-21T19:47:30.570Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
