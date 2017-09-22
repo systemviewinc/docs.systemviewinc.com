@@ -40,6 +40,7 @@
     * [Log](runtime/log.md)
     * [Buffer](runtime/buffer.md)
     * [hls::stream](runtime/hlsstream.md)
+    * [vsi::device](runtime/vsi_device.md)
   * [Logging](usage/logging.md)
   * [Command Line](usage/commandline.md)
   * [Advanced](advanced/readme.md)
