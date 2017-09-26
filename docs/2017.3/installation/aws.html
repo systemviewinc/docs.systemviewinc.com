@@ -767,31 +767,47 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="run-visual-system-integrator-on-aws-ec2">Run Visual System Integrator on AWS EC2</h3>
-<h4 id="requirements">Requirements</h4>
+                                <h2 id="run-visual-system-integrator-on-aws-ec2">Run Visual System Integrator on AWS EC2</h2>
+<h3 id="requirements">Requirements</h3>
 <ul>
 <li>An active AWS account with billing and the ability to launch paid instance.</li>
 <li>For Graphical User Interface, a Web Browser or a VNC Client</li>
 <li>While we set no restrictions on the type of instance that VSI runs on, for best use experience, we recommend using an instance with 8+ virtual cores and 30GB+ of RAM.</li>
 <li>In order to reduce User Interface lag, a fast connection to the internet is highly desirable.</li>
 </ul>
-<h4 id="launching-visual-system-integrator-on-aws">Launching Visual System Integrator on AWS</h4>
-<p>Launch a VSI FPGA Developer Instance using AWS console or cli tool.<sup>1, 2</sup></p>
-<p>Once the the instance is running, connect to the instance using an ssh client <sup>3</sup>.</p>
-<p>NOTE: The first login will take a while due to the AWS EC2 F1 HDK Shell initialization. Please be patient. When the initialization is complete, the machine has to be rebooted once for the graphical session to work. (hint: <code>sudo reboot</code> from the ssh client)</p>
-<p>To use VSI in graphical mode with a web browser, the instance&apos;s port 80 has to be forwarded to a local port. Use the following syntax with the command line ssh client to do that (for putty or other SSH clients, consult it&apos;s user manual):</p>
+<h3 id="launching-visual-system-integrator-on-aws">Launching Visual System Integrator on AWS</h3>
+<ol>
+<li>Launch a VSI FPGA Developer Instance using AWS console or cli tool.<sup>1, 2</sup></li>
+<li><p>Once the the instance is running, connect to the instance using an ssh client <sup>3</sup>.</p>
+<p> NOTE: The first login will take a while due to the AWS EC2 F1 HDK Shell initialization. Please be patient. When the initialization is complete)</p>
+</li>
+</ol>
+<h3 id="optional-using-the-graphical-session">Optional: Using the graphical session</h3>
+<ol>
+<li>Set the password for graphical session through VNC (hint: <code>vncpasswd</code>).</li>
+<li>The machine has to be rebooted once for the graphical session to work. (hint: <code>sudo reboot</code> from the ssh client)</li>
+</ol>
+<h4 id="through-a-web-browser">Through a Web-browser</h4>
+<p>To use VSI in graphical mode through a web browser, a local port has to be forwarded to the instance&apos;s port 80.
+The following syntax with the command line ssh client forwards local port 8080 to instances port 80:</p>
 <p><code>ssh -L 8080:localhost:80 centos@&lt;instance DNS name or IP Address&gt;</code></p>
-<p>NOTE: Ensure that the local port 8080 is not being used by another. If it is, then replace 8080 with 8081 or any other free port.</p>
-<p>Once the ssh client has connected, open a web browser to the following URI <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>. The default password for the VNC is <code>systemview</code>. Since the VNC session is tunneled through the SSH session, the password need not be changed. If you decide to change it, use the command <code>vncpasswd</code> from the ssh client to change it.</p>
-<p>Similarly, to connect using a dedicated VNC client, the following syntax can be used:</p>
+<p>In case if putty is being used on windows, use the plink.exe from command line (should be in the same directory as putty.exe). Similar syntax can be used to connect to the instance:</p>
+<p><code>plink.exe -L 8080:localhost:80 centos@&lt;instance DNS name or IP Address&gt;</code></p>
+<p>NOTE: The local port 8080 is used as an example. If another program on your computer is using it, use an alternative port that is free.</p>
+<p>Once the ssh client has connected, issue the command <code>vncpasswd</code> to set a password for VNC session.</p>
+<p>Open a web browser to the following URI <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>. The password set earlier needs to be used to authenticate.</p>
+<h4 id="through-native-vnc-client">Through native VNC client:</h4>
+<p>To connect using a native VNC client, the following syntax can be used:</p>
 <p><code>ssh -L 5901:localhost:5901 centos@&lt;instance DNS name or IP Address&gt;</code></p>
-<p>Once connected, use the <code>localhost:5901</code> in your VNC Client to open the Graphical session.</p>
+<p>or</p>
+<p><code>plink.exe -L 5901:localhost:5901 centos@&lt;instance DNS name or IP Address&gt;</code></p>
+<p>Once connected, use the <code>localhost:5901</code> through your VNC Client to connect to the Graphical session. The password set earlier needs to be used to authenticate.</p>
 <p>For walk throughs and guides, consult the <a href="https://systemviewinc.com/docs" target="_blank">Visual System Integrator docs</a>.</p>
 <h4 id="notes-on-security">Notes on Security:</h4>
 <ul>
-<li>The graphical session is tunneled through the SSH tunnel.</li>
-<li>The default password for the graphical session is <code>systemview</code></li>
-<li>The password can be changed using <code>vncpasswd</code> from the ssh client.</li>
+<li>The graphical session is tunneled through the SSH tunnel and is encrypted between your local computer and the instance.</li>
+<li>The graphical session password can be changed using <code>vncpasswd</code> from the ssh client.</li>
+<li>The VNC server listens to instance&apos;s local address only (127.0.0.1/localhost) in order to enforce encryption through a tunnel.</li>
 </ul>
 <h4 id="footnotes">Footnotes</h4>
 <ol>
@@ -842,7 +858,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AWS F1","level":"1.2.4","depth":2,"next":{"title":"Licensing","level":"1.2.5","depth":2,"path":"license.md","ref":"license.md","articles":[]},"previous":{"title":"Docker","level":"1.2.3","depth":2,"path":"installation/docker.md","ref":"installation/docker.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon","block-align"],"styles":{"website":"style.css"},"pluginsConfig":{"block-align":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/master/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2","selected":true},{"value":"/2017.3","text":"2017.3"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"installation/aws.md","mtime":"2017-09-21T19:47:13.731Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-22T20:57:19.606Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AWS F1","level":"1.2.4","depth":2,"next":{"title":"Licensing","level":"1.2.5","depth":2,"path":"license.md","ref":"license.md","articles":[]},"previous":{"title":"Docker","level":"1.2.3","depth":2,"path":"installation/docker.md","ref":"installation/docker.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon","block-align"],"styles":{"website":"style.css"},"pluginsConfig":{"block-align":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/master/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2","selected":true},{"value":"/2017.3","text":"2017.3"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"installation/aws.md","mtime":"2017-09-26T21:39:24.053Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-26T21:41:19.558Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
