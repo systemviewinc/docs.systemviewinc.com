@@ -3,7 +3,7 @@
 	"styles": {
 		"website": "style.css"
 	},
-	"plugins": ["ga", "versions", "bring-yer-favicon", "block-align"],
+	"plugins": ["ga", "versions", "bring-yer-favicon", "block-align", "theme-api"],
 	"pluginsConfig": {
 		"ga": {
 			"token": "UA-90334039-2"

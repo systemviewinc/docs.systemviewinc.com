@@ -36,6 +36,10 @@
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
                 
             
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-api/theme-api.css">
+                
+            
         
 
     
@@ -767,143 +771,313 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h4 id="vsiruntimebuffer">vsi::runtime::Buffer</h4>
+                                <h2 id="buffer">Buffer</h2>
 <p>This utility class provides method to store and retrieve binary data.</p>
-<h4 id="function-reference">Function Reference</h4>
+<h3 id="function-reference">Function Reference</h3>
+<div class="api-method"><div class="api-method-definition"><h4 id="buffer"><code>Buffer()</code></h4>
+<p>Construct an empty buffer.</p>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+<p><code>vsi::runtime::Buffer();</code></p>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<p><code>vsi_runtime.Buffer()</code></p>
+</div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="buffersizet-len"><code>Buffer(size_t len)</code></h4>
+<p>Construct a buffer of specific size.</p>
+<h6 id="parameters">Parameters</h6>
 <ul>
-<li><code>Buffer()</code>: Construct an empty buffer.</li>
-<li><code>Buffer(size_t len)</code>: Construct a buffer.<ul>
-<li><code>len</code>: Size of the buffer to construct.</li>
+<li>len: Size of the buffer to construct.</li>
 </ul>
-</li>
-<li><code>Buffer(const char *string)</code>: Construct a buffer using a null terminated string. The length and content are same as string&apos;s.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+<p><code>vsi::runtime::Buffer(256);</code></p>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<p><code>vsi_runtime.Buffer(256)</code></p>
+</div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="bufferconst-char-string"><code>Buffer(const char *string)</code></h4>
+<p>Construct a buffer using a null terminated string. The length and content are same as string&apos;s.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>string</code>: The input string.</li>
 </ul>
-</li>
-<li><code>Buffer(void *_data, size_t len, bool direct = false)</code>: Construct a buffer using a data pointer and given length.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+<p><code>vsi::runtime::Buffer(&quot;abcd&quot;);</code></p>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<p><code>vsi_runtime.Buffer(&apos;abcd&apos;)</code></p>
+</div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="buffervoid-data-sizet-len-bool-direct--false"><code>Buffer(void *_data, size_t len, bool direct = false)</code></h4>
+<p>Construct a buffer using a data pointer and given length.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>_data</code>: Pointer of the data to copy from.</li>
 <li><code>len</code>: Size of the buffer to construct.</li>
-<li><code>direct</code>: If this parameter is true then buffer will not allocate nor copy the content but use the provided pointer as the preallocated memory.</li>
+<li><code>direct</code>: Set to true to avoid allocating a new buffer such as when using it with language binding.</li>
 </ul>
-</li>
-<li><code>put(const unsigned char _byte, int _offset)</code>: Copy a single byte into the buffer at the given offset.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+<pre><code>void copy_buff(void *data, size_t d_size) {
+    vsi::runtime::Buffer buf(data, d_size);
+    // Do something with the buffer
+}
+</code></pre></div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<p>N/A</p>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="putconst-unsigned-char-byte-int-offset"><code>put(const unsigned char _byte, int _offset)</code></h4>
+<p>Copy a single byte into the buffer at the given offset.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>_byte</code>: Byte to copy into the buffer.</li>
 <li><code>_offset</code>: This will be used as the target offset into the buffer for the copy operation.</li>
 </ul>
-</li>
-<li><code>put(Buffer *src, int _offset = 0)</code>: Copies another <code>Buffer</code>&apos;s contents into this buffer at the given offset.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="putbuffer-src-int-offset--0"><code>put(Buffer *src, int _offset = 0)</code></h4>
+<p>Copies another Buffer&apos;s contents into this buffer at the given offset.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>src</code>: Pointer to the source buffer.</li>
 <li><code>_offset</code>: This will be used as the target offset into the buffer for the copy operation.</li>
 </ul>
-</li>
-<li><code>getInt()</code>: Returns an integer value and forwards the current offset by it&apos;s size.
-  return: The integer value stored at current offset.</li>
-<li><code>compare(Buffer &amp;buf)</code>: Compares the content of this buffer with another Buffer.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="getint"><code>getInt()</code></h4>
+<p>Returns an integer value and forwards the current offset by it&apos;s size.</p>
+<h6 id="parameters">Parameters</h6>
+<pre><code>return: The integer value stored at current offset.
+</code></pre></div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="comparebuffer-buf"><code>compare(Buffer &amp;buf)</code></h4>
+<p>Compares the content of this buffer with another Buffer.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>buf</code>: Pointer to another <code>Buffer</code> to compare against.</li>
 <li>return: true if the contents are identical. False otherwise.</li>
 </ul>
-</li>
-<li><code>putInt(int i)</code>: Stores an integer at the current offset and forwards the offset by integer&apos;s size.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="putintint-i"><code>putInt(int i)</code></h4>
+<p>Stores an integer at the current offset and forwards the offset by integer&apos;s size.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>i</code>: Integer value to store in the buffer.</li>
 </ul>
-</li>
-<li><code>fill(const char *pattern)</code>: Fills the buffer with the given pattern. The pattern is repeated to fill the whole buffer. If the pattern is bigger than the buffer then only the portion that it is clipped.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="fillconst-char-pattern"><code>fill(const char *pattern)</code></h4>
+<p>Fills the buffer with the given pattern. The pattern is repeated to fill the whole buffer. If the pattern is bigger than the buffer then only the portion that it is clipped.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>pattern</code>: A pattern to fill in the buffer. A null terminated string is required.</li>
 </ul>
-</li>
-<li><code>getShort()</code>: Return a short value at current offset and forward the offset by short size.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="getshort"><code>getShort()</code></h4>
+<p>Return a short value at current offset and forward the offset by short size.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li>return: The short value that is at current offset.</li>
 </ul>
-</li>
-<li><code>putShort(short i)</code>: Write the short value at current offset and forward the offset by short size.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="putshortshort-i"><code>putShort(short i)</code></h4>
+<p>Write the short value at current offset and forward the offset by short size.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>i</code>: Short value to write.</li>
 </ul>
-</li>
-<li><code>getChar()</code>: Read a char value at current offset and forward the offset by char size.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="getchar"><code>getChar()</code></h4>
+<p>Read a char value at current offset and forward the offset by char size.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li>return: The char value that is at current offset.</li>
 </ul>
-</li>
-<li><code>putChar(char i)</code>: Write the char value at current offset and forward the offset by char size.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="putcharchar-i"><code>putChar(char i)</code></h4>
+<p>Write the char value at current offset and forward the offset by char size.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>i</code>: Char value to write.</li>
 </ul>
-</li>
-<li><code>size()</code>: Returns the size of the buffer minus current offset. Note that internal size might be larger than the value return if offset is &gt; 0;<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="size"><code>size()</code></h4>
+<p>Returns the size of the buffer minus current offset. Note that internal size might be larger than the value return if offset is &gt; 0;</p>
+<ul>
 <li>return: Readable size of the buffer (size - offset).</li>
 </ul>
-</li>
-<li><code>get()</code>: Returns the underlying raw pointer of stored data at current offset.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="get"><code>get()</code></h4>
+<p>Returns the underlying raw pointer of stored data at current offset.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li>return: Pointer to the data.</li>
 </ul>
-</li>
-<li><code>rewind()</code>: Rewinds the buffer, setting the offset at zero.</li>
-<li><code>data()</code>: Returns the underlying raw pointer of stored data at current offset.</li>
-<li><code>base_size()</code>: returns the total size of the underlying buffer. Note that this is the overall memory size that is used by the buffer, not affected by the current offset.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="rewind"><code>rewind()</code></h4>
+<p>Rewinds the buffer, setting the offset at zero.</p>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="data"><code>data()</code></h4>
+<p>Returns the underlying raw pointer of stored data at current offset.</p>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="basesize"><code>base_size()</code></h4>
+<p>returns the total size of the underlying buffer. Note that this is the overall memory size that is used by the buffer, not affected by the current offset.</p>
+<ul>
 <li>return: total size of the underlying buffer.</li>
 </ul>
-</li>
-<li><code>base_data()</code>: Returns the raw pointer of the underlying buffer. The pointer is to the base and is not affected by current offset.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="basedata"><code>base_data()</code></h4>
+<p>Returns the raw pointer of the underlying buffer. The pointer is to the base and is not affected by current offset.</p>
+<ul>
 <li>return: raw pointer to the underlying buffer.</li>
 </ul>
-</li>
-<li><code>substr(size_t size)</code>: Returns a part of buffer clipped to the specified size.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="substrsizet-size"><code>substr(size_t size)</code></h4>
+<p>Returns a part of buffer clipped to the specified size.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>size</code>: Only return these many bytes.</li>
 <li>return: std::string containing the clipped buffer. If buffer size was larger than passed size, it is appended by <code>...</code> to indicate clipping status.</li>
 </ul>
-</li>
-<li><code>bytes(size_t size, const char *separator)</code>: Returns a string formatted as hexadecimal and separated by the provided separator character.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="bytessizet-size-const-char-separator"><code>bytes(size_t size, const char *separator)</code></h4>
+<p>Returns a string formatted as hexadecimal and separated by the provided separator character.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>size</code>: limit the return string to this size.</li>
 <li><code>separator</code>: user this character as the separator.</li>
 <li>return: std::string formated as hexadecimal string.</li>
 </ul>
-</li>
-<li><code>offset()</code>: Returns the current offset of the buffer.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="offset"><code>offset()</code></h4>
+<p>Returns the current offset of the buffer.</p>
+<ul>
 <li>return: integer specifying the current offset.</li>
 </ul>
-</li>
-<li><code>set(const void *_data, size_t len)</code>: Sets the buffer contents. The underlying buffer will resize to accommodate the new size.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="setconst-void-data-sizet-len"><code>set(const void *_data, size_t len)</code></h4>
+<p>Sets the buffer contents. The underlying buffer will resize to accommodate the new size.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>_data</code>: Pointer to raw content to copy.</li>
 <li><code>len</code>: Size of the content to copy. Also used as the new size for this buffer.</li>
 </ul>
-</li>
-<li><code>set(const char *string)</code>: Sets the buffer contents to a null terminated string. The underlying buffer will resize to accommodate the new size.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="setconst-char-string"><code>set(const char *string)</code></h4>
+<p>Sets the buffer contents to a null terminated string. The underlying buffer will resize to accommodate the new size.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>string</code>: the null terminated string to use as the content and to calculate the new size of the buffer.</li>
 </ul>
-</li>
-<li><code>direct_set(void *_data, size_t _size)</code>: Change the buffer to use the provided raw buffer as the underlying buffer. The provided raw buffer should be allocated using malloc or new and will be freed by this <code>Buffer</code> when it&apos;s destructor is called.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="directsetvoid-data-sizet-size"><code>direct_set(void *_data, size_t _size)</code></h4>
+<p>Change the buffer to use the provided raw buffer as the underlying buffer. The provided raw buffer should be allocated using malloc or new and will be freed by this <code>Buffer</code> when it&apos;s destructor is called.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>_data</code>: Pointer to the raw buffer.</li>
 <li><code>_size</code>: Size of the raw buffer;</li>
 </ul>
-</li>
-<li><code>add(const void *_data, size_t len)</code>: Appends data to the current buffer. The underlying buffer will be resized to accommodate the new size.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="addconst-void-data-sizet-len"><code>add(const void *_data, size_t len)</code></h4>
+<p>Appends data to the current buffer. The underlying buffer will be resized to accommodate the new size.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>_data</code>: Pointer to the data.</li>
 <li><code>_size</code>: Size of the raw buffer;</li>
 </ul>
-</li>
-<li><code>add(Buffer *buf)</code>: Appends another Buffer&apos;s contents to the current buffer. The underlying buffer will be resized to accommodate the new size.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="addbuffer-buf"><code>add(Buffer *buf)</code></h4>
+<p>Appends another Buffer&apos;s contents to the current buffer. The underlying buffer will be resized to accommodate the new size.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>buf</code>: Pointer to the <code>Buffer</code> to copy the data from.</li>
 </ul>
-</li>
-<li><code>offset(size_t _offset)</code>: Sets the current offset to provided value.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="offsetsizet-offset"><code>offset(size_t _offset)</code></h4>
+<p>Sets the current offset to provided value.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>_offset</code>: New offset value. It should not be larger than the underlying buffer&apos;s size.</li>
 </ul>
-</li>
-<li><code>dev_offset(size_t _offset)</code>: An auxiliary piece of integer that is used to specify the target offset to write the data once it reaches it&apos;s destination.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="devoffsetsizet-offset"><code>dev_offset(size_t _offset)</code></h4>
+<p>An auxiliary piece of integer that is used to specify the target offset to write the data once it reaches it&apos;s destination.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>_offset</code>: Offset to write the data to. The offset is only enforced for memory devices.</li>
 </ul>
-</li>
-<li><code>dev_offset()</code>: Returns the memory offset where the buffer should be written to.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="devoffset"><code>dev_offset()</code></h4>
+<p>Returns the memory offset where the buffer should be written to.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li>return: Returns the auxiliary offset.</li>
 </ul>
-</li>
-<li><code>reduce(size_t size)</code>: Truncates the buffer by provided size. The truncated bytes are permanently lost.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="reducesizet-size"><code>reduce(size_t size)</code></h4>
+<p>Truncates the buffer by provided size. The truncated bytes are permanently lost.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>size</code>: Truncate the underlying buffer by this size. The overall size of the buffer must be larger or equal to the provided size.</li>
 </ul>
-</li>
-<li><code>alloc(size_t len)</code>: Allocate the given size for the underlying buffer. If there was an existing buffer than it is freed.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+<div class="api-method"><div class="api-method-definition"><h4 id="allocsizet-len"><code>alloc(size_t len)</code></h4>
+<p>Allocate the given size for the underlying buffer. If there was an existing buffer than it is freed.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>len</code>: The new size of the underlying buffer.</li>
 </ul>
-</li>
-</ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
 
                                 
                                 </section>
@@ -930,24 +1104,14 @@
             </div>
 
             
-                
-                <a href="log.html" class="navigation navigation-prev " aria-label="Previous page: Log">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="hlsstream.html" class="navigation navigation-next " aria-label="Next page: hls::stream">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
+
         
     </div>
 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Buffer","level":"1.7.2.10","depth":3,"next":{"title":"hls::stream","level":"1.7.2.11","depth":3,"path":"runtime/hlsstream.md","ref":"runtime/hlsstream.md","articles":[]},"previous":{"title":"Log","level":"1.7.2.9","depth":3,"path":"runtime/log.md","ref":"runtime/log.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon","block-align"],"styles":{"website":"style.css"},"pluginsConfig":{"block-align":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/master/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2","selected":true},{"value":"/2017.3","text":"2017.3"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"runtime/buffer.md","mtime":"2017-06-16T23:31:57.120Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-22T20:57:19.606Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Buffer","level":"1.7.2.10","depth":3,"next":{"title":"hls::stream","level":"1.7.2.11","depth":3,"path":"runtime/hlsstream.md","ref":"runtime/hlsstream.md","articles":[]},"previous":{"title":"Log","level":"1.7.2.9","depth":3,"path":"runtime/log.md","ref":"runtime/log.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon","block-align","theme-api"],"styles":{"website":"style.css"},"pluginsConfig":{"block-align":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"theme-api":{"languages":[],"split":true,"theme":"light"},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/master/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2","selected":true},{"value":"/2017.3","text":"2017.3"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"runtime/buffer.md","mtime":"2017-11-09T02:37:34.878Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-09T19:30:17.965Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -986,6 +1150,10 @@
     
         
         <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
         
     
 
