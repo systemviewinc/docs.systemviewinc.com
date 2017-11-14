@@ -771,26 +771,47 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="hlsstream-and-hlsstreambuffer">hls::stream and hls::stream_buffer</h3>
-<p>This provides a hls::stream compatible implementation that is synthesizable similar to the hls::stream provided by Vivado_hls.</p>
-<h4 id="function-reference">Function Reference</h4>
+                                <h2 id="hlsstream-and-hlsstreambuffer">hls::stream and hls::stream_buffer</h2>
+<p>This provides a hls::stream compatible implementation.</p>
+<p>When used with C/C++, the code is synthesizable to FPGA.</p>
+<h3 id="function-reference">Function Reference</h3>
+<div class="api-method"><div class="api-method-definition"><h4 id="streambufferstreambuffer"><code>stream_buffer::stream_buffer()</code></h4>
+<p>construct a stream_buffer.</p>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="readvoid-out-sizet-size"><code>read(void *out, size_t size)</code></h4>
+<p>read specified number of bytes from the stream_buffer. If the size provided is lesser than the size of first chunk, then only the specified number of bytes are read and truncated from the chunk. If the size of larger than the available chunk then the chunk is popped off and is returned as it is. The returned size is guaranteed to be less or equal to the requested size.</p>
+<h6 id="parameters">Parameters</h6>
 <ul>
-<li><code>stream_buffer::stream_buffer()</code>: construct a stream_buffer.</li>
-<li><code>read(void *out, size_t size)</code>: read specified number of bytes from the stream_buffer. If the size provided is lesser than the size of first chunk, then only the specified number of bytes are read and truncated from the chunk. If the size of larger than the available chunk then the chunk is popped off and is returned as it is. The returned size is guaranteed to be less or equal to the requested size.<ul>
 <li><code>out</code>: Target raw buffer.</li>
 <li><code>size</code>: size of the data to read.</li>
 <li>return: the size of actual bytes read.</li>
 </ul>
-</li>
-<li><code>length()</code>: Return the size of the all the data available in the stream pipeline.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="length"><code>length()</code></h4>
+<p>Return the size of the all the data available in the stream pipeline.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li>return: The total bytes of data that can be read. Note that these might be divided between multiple chunks and may requite multiple reads.</li>
 </ul>
-</li>
-<li><code>read()</code>: Pop off the first chunk of data from the stream and return it.<ul>
-<li><code>spBuffer</code>: A shared pointer buffer <code>std::shared_ptr&lt;Buffer&gt;</code> containing the requested element is returned. It will free itself once all the references to it are out of scope.</li>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="readbuffer-buf"><code>read(Buffer buf)</code></h4>
+<p>Pop off the first chunk of data from the stream and return it.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
+<li><code>Buffer</code>: A buffer element is returned. The element is automatically freed once it is no longer in use or the function/scope exits.</li>
 </ul>
-</li>
-</ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+</div></div></div>
 
                                 
                                 </section>
@@ -824,7 +845,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"hls::stream","level":"1.7.2.11","depth":3,"next":{"title":"vsi::device","level":"1.7.2.12","depth":3,"path":"runtime/vsi_device.md","ref":"runtime/vsi_device.md","articles":[]},"previous":{"title":"Buffer","level":"1.7.2.10","depth":3,"path":"runtime/buffer.md","ref":"runtime/buffer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon","block-align","theme-api"],"styles":{"website":"style.css"},"pluginsConfig":{"block-align":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"theme-api":{"languages":[],"split":true,"theme":"light"},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/master/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2","selected":true},{"value":"/2017.3","text":"2017.3"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"runtime/hlsstream.md","mtime":"2017-06-16T23:31:57.120Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-09T19:30:17.965Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"hls::stream","level":"1.7.2.11","depth":3,"next":{"title":"vsi::device","level":"1.7.2.12","depth":3,"path":"runtime/vsi_device.md","ref":"runtime/vsi_device.md","articles":[]},"previous":{"title":"Buffer","level":"1.7.2.10","depth":3,"path":"runtime/buffer.md","ref":"runtime/buffer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon","block-align","theme-api"],"styles":{"website":"style.css"},"pluginsConfig":{"block-align":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"theme-api":{"languages":[],"split":true,"theme":"light"},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/master/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2","selected":true},{"value":"/2017.3","text":"2017.3"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"runtime/hlsstream.md","mtime":"2017-11-14T23:41:58.218Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-14T23:42:25.189Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

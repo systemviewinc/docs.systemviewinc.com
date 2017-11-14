@@ -771,43 +771,92 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="vsidevice">vsi::device</h3>
+                                <h2 id="vsidevice">vsi::device</h2>
 <p>This provides direct access to a hardware device or software shared memory using posix compliant calls.</p>
-<h4 id="function-reference">Function Reference</h4>
+<h3 id="function-reference">Function Reference</h3>
+<div class="api-method"><div class="api-method-definition"><h4 id="int-writeconst-void-buff-sizet-count"><code>int write(const void *buff, size_t count)</code></h4>
+<h6 id="parameters">Parameters</h6>
 <ul>
-<li><code>int write(const void *buff, size_t count)</code>: Write number of bytes to the device.<ul>
 <li><code>buff</code>: Raw buffer containing the data to write.</li>
 <li><code>count</code>: Size of bytes to write. Should be equal to or smaller than the buff size.</li>
-<li>return: the size of actual bytes written.</li>
+<li>return: the size of actual bytes written.
+Write number of bytes to the device.</li>
 </ul>
-</li>
-<li><code>int read (void *buff, size_t count)</code>: read specified number of bytes from the vsi::device. Returns the number of bytes read.<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<pre><code>    # dev = VsiDevice
+    buf_in = vsi_runtime.Buffer(256)
+    buf_in.fill(&quot;abcd0123&quot;)
+    dev.write(buf_in)
+</code></pre></div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="int-read-void-buff-sizet-count"><code>int read (void *buff, size_t count)</code></h4>
+<p>read specified number of bytes from the vsi::device. Returns the number of bytes read.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>buff</code>: Target raw buffer.</li>
 <li><code>count</code>: size of the data to read.</li>
 <li>return: the size of actual bytes read.</li>
 </ul>
-</li>
-<li><code>int pwrite(const void *buff, size_t count, int offset)</code>:<ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<pre><code>    # dev = VsiDevice
+    buf_out = vsi_runtime.Buffer(256)
+    dev.read(buf_out)
+</code></pre></div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="int-pwriteconst-void-buff-sizet-count-int-offset"><code>int pwrite(const void *buff, size_t count, int offset)</code>:</h4>
+<h6 id="parameters">Parameters</h6>
+<ul>
 <li><code>buff</code>: Raw buffer containing the data to write.</li>
 <li><code>count</code>: Size of bytes to write. Should be equal to or smaller than the buff size.</li>
 <li><code>offset</code>: Specify the offset to write.</li>
 <li>return: the size of actual bytes written.</li>
 </ul>
-</li>
-<li><code>int pread(void *buff, size_t count, int offset)</code>:<ul>
-<li><code>buff</code>: Target raw buffer.</li>
-<li><code>count</code>: size of the data to read.</li>
-<li><code>offset</code>: Specify the offset to read.</li>
-<li>return: the size of actual bytes read.</li>
-</ul>
-</li>
-<li><code>int poll(int timeout)</code>: Blocks until an interrupt or till timeout expires.<ul>
-<li><code>timeout</code>: Timeout to wait for an interrupt.</li>
-</ul>
-</li>
-<li><code>int device_fd()</code>: Returns the underlying operating system device descriptor.</li>
-</ul>
-<h4 id="python-wrapper-specific-notes-and-code-snippets">Python Wrapper Specific notes and code snippets:</h4>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<pre><code>    # dev = VsiDevice
+    OFFSET = 0
+    buf_in = vsi_runtime.Buffer(256)
+    buf_in.fill(&quot;abcd0123&quot;)
+    dev.pwrite(buf_in, OFFSET)
+</code></pre></div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="int-preadvoid-buff-sizet-count-int-offset"><code>int pread(void *buff, size_t count, int offset)</code>:</h4>
+<h6 id="parameters">Parameters</h6>
+<pre><code>- `buff`: Target raw buffer.
+- `count`: size of the data to read.
+- `offset`: Specify the offset to read.
+- return: the size of actual bytes read.
+</code></pre></div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<pre><code>    # dev = VsiDevice
+    OFFSET = 0
+    buf_out = vsi_runtime.Buffer(256)
+    dev.pread(buf_out, OFFSET)
+</code></pre></div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="int-pollint-timeout"><code>int poll(int timeout)</code></h4>
+<p>Blocks until an interrupt or till timeout expires.</p>
+<h6 id="parameters">Parameters</h6>
+<pre><code>- `timeout`: Timeout to wait for an interrupt.
+</code></pre></div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<pre><code>    # dev = VsiDevice
+    dev.poll()
+</code></pre></div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="int-devicefd"><code>int device_fd()</code></h4>
+<p>Returns the underlying operating system device descriptor.</p>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<pre><code>    # dev = VsiDevice
+    FD = dev.device_fd()
+</code></pre></div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="language-specific-notes-and-code-snippets">Language Specific notes and code snippets</h4>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
 <p>Since python has no <code>void*</code> type, in order to use read, write, pread and pwrite from Python, the pointer and size needs to be wrapped into a VsiDevice type.</p>
 <p>A typical example of it is as following:</p>
 <pre><code>def process_device(dev):
@@ -841,7 +890,8 @@
             buf_in.set(f.read(256))
     finally:
         f.close()
-</code></pre>
+</code></pre></div></div></div>
+
                                 
                                 </section>
                             
@@ -874,7 +924,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"vsi::device","level":"1.7.2.12","depth":3,"next":{"title":"Logging","level":"1.7.3","depth":2,"path":"usage/logging.md","ref":"usage/logging.md","articles":[]},"previous":{"title":"hls::stream","level":"1.7.2.11","depth":3,"path":"runtime/hlsstream.md","ref":"runtime/hlsstream.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon","block-align","theme-api"],"styles":{"website":"style.css"},"pluginsConfig":{"block-align":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"theme-api":{"languages":[],"split":true,"theme":"light"},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/master/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2","selected":true},{"value":"/2017.3","text":"2017.3"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"runtime/vsi_device.md","mtime":"2017-09-22T20:56:23.182Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-09T19:30:17.965Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"vsi::device","level":"1.7.2.12","depth":3,"next":{"title":"Logging","level":"1.7.3","depth":2,"path":"usage/logging.md","ref":"usage/logging.md","articles":[]},"previous":{"title":"hls::stream","level":"1.7.2.11","depth":3,"path":"runtime/hlsstream.md","ref":"runtime/hlsstream.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon","block-align","theme-api"],"styles":{"website":"style.css"},"pluginsConfig":{"block-align":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"theme-api":{"languages":[],"split":true,"theme":"light"},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/master/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2","selected":true},{"value":"/2017.3","text":"2017.3"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"runtime/vsi_device.md","mtime":"2017-11-14T23:33:36.056Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-14T23:42:25.189Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
