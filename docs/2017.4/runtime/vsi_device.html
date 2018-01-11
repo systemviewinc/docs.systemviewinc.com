@@ -1,0 +1,975 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>vsi::device · Documentation | Visual System Integrator</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-block-align/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-api/theme-api.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../style.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../usage/logging.html" />
+    
+    
+    <link rel="prev" href="hlsstream.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../installation/readme.md">
+            
+                <span>
+            
+                    
+                    Installation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../installation/linux.html">
+            
+                <a href="../installation/linux.html">
+            
+                    
+                    Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../installation/windows.html">
+            
+                <a href="../installation/windows.html">
+            
+                    
+                    Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../installation/docker.html">
+            
+                <a href="../installation/docker.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../installation/aws.html">
+            
+                <a href="../installation/aws.html">
+            
+                    
+                    AWS F1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../license.html">
+            
+                <a href="../license.html">
+            
+                    
+                    Licensing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../usage/readme.html">
+            
+                <a href="../usage/readme.html">
+            
+                    
+                    Guides
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../usage/getting_started.html">
+            
+                <a href="../usage/getting_started.html">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../usage/user_guide.html">
+            
+                <a href="../usage/user_guide.html">
+            
+                    
+                    User Guide
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../usage/zynq.html">
+            
+                <a href="../usage/zynq.html">
+            
+                    
+                    ZYNQ Tutorial
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../usage/zynq.html">
+            
+                <a href="../usage/zynq.html">
+            
+                    
+                    Creating a Zynq Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="../usage/creating_the_sort_demo.html">
+            
+                <a href="../usage/creating_the_sort_demo.html">
+            
+                    
+                    Creating the Sort Demo
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../usage/vc709.html">
+            
+                <a href="../usage/vc709.html">
+            
+                    
+                    VC709 Tutorial
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.4.1" data-path="../usage/vc709.html">
+            
+                <a href="../usage/vc709.html">
+            
+                    
+                    Creating a VC709 Platform for packet processing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.2" data-path="../usage/vc709_packet.html">
+            
+                <a href="../usage/vc709_packet.html">
+            
+                    
+                    Creating a Packet Processor
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../usage/simulation.html">
+            
+                <a href="../usage/simulation.html">
+            
+                    
+                    Simulation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../usage/systeminterface.html">
+            
+                <a href="../usage/systeminterface.html">
+            
+                    
+                    System Interface
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../usage/python_java.html">
+            
+                <a href="../usage/python_java.html">
+            
+                    
+                    Python and Java
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../usage/external_interface.html">
+            
+                <a href="../usage/external_interface.html">
+            
+                    
+                    Interfacing with External Systems
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.8.1" data-path="../usage/api.html">
+            
+                <a href="../usage/api.html">
+            
+                    
+                    Using API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8.2" data-path="../usage/tcp.html">
+            
+                <a href="../usage/tcp.html">
+            
+                    
+                    Using TCP Ports
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8.3" data-path="../usage/rest.html">
+            
+                <a href="../usage/rest.html">
+            
+                    
+                    Using RESTful Endpoints
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../features/readme.html">
+            
+                <a href="../features/readme.html">
+            
+                    
+                    Features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../troubleshooting/readme.html">
+            
+                <a href="../troubleshooting/readme.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../releases.html">
+            
+                <a href="../releases.html">
+            
+                    
+                    Releases
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../reference/readme.md">
+            
+                <span>
+            
+                    
+                    Reference
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../workflow.html">
+            
+                <a href="../workflow.html">
+            
+                    
+                    Development Workflow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="readme.html">
+            
+                <a href="readme.html">
+            
+                    
+                    VSI Runtime
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="runtime.html">
+            
+                <a href="runtime.html">
+            
+                    
+                    Runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="custom.html">
+            
+                <a href="custom.html">
+            
+                    
+                    Custom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="inout.html">
+            
+                <a href="inout.html">
+            
+                    
+                    Inout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.4" data-path="tcp_server.html">
+            
+                <a href="tcp_server.html">
+            
+                    
+                    Tcp Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.5" data-path="tcp_client.html">
+            
+                <a href="tcp_client.html">
+            
+                    
+                    Tcp Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.6" data-path="net.html">
+            
+                <a href="net.html">
+            
+                    
+                    Net
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.7" data-path="interconnect.html">
+            
+                <a href="interconnect.html">
+            
+                    
+                    Interconnect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.8" data-path="connect.html">
+            
+                <a href="connect.html">
+            
+                    
+                    Connect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.9" data-path="log.html">
+            
+                <a href="log.html">
+            
+                    
+                    Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.10" data-path="buffer.html">
+            
+                <a href="buffer.html">
+            
+                    
+                    Buffer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.11" data-path="hlsstream.html">
+            
+                <a href="hlsstream.html">
+            
+                    
+                    hls::stream
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.2.12" data-path="vsi_device.html">
+            
+                <a href="vsi_device.html">
+            
+                    
+                    vsi::device
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../usage/logging.html">
+            
+                <a href="../usage/logging.html">
+            
+                    
+                    Logging
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../usage/commandline.html">
+            
+                <a href="../usage/commandline.html">
+            
+                    
+                    Command Line
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../advanced/readme.md">
+            
+                <span>
+            
+                    
+                    Advanced
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="../templates/">
+            
+                <a href="../templates/">
+            
+                    
+                    Templates
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >vsi::device</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="vsidevice">vsi::device</h2>
+<p>This provides direct access to a hardware device or software shared memory using posix compliant calls.</p>
+<h3 id="function-reference">Function Reference</h3>
+<div class="api-method"><div class="api-method-definition"><h4 id="int-writeconst-void-buff-sizet-count"><code>int write(const void *buff, size_t count)</code></h4>
+<h6 id="parameters">Parameters</h6>
+<ul>
+<li><code>buff</code>: Raw buffer containing the data to write.</li>
+<li><code>count</code>: Size of bytes to write. Should be equal to or smaller than the buff size.</li>
+<li>return: the size of actual bytes written.
+Write number of bytes to the device.</li>
+</ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<pre><code>    # dev = VsiDevice
+    buf_in = vsi_runtime.Buffer(256)
+    buf_in.fill(&quot;abcd0123&quot;)
+    dev.write(buf_in)
+</code></pre></div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="int-read-void-buff-sizet-count"><code>int read (void *buff, size_t count)</code></h4>
+<p>read specified number of bytes from the vsi::device. Returns the number of bytes read.</p>
+<h6 id="parameters">Parameters</h6>
+<ul>
+<li><code>buff</code>: Target raw buffer.</li>
+<li><code>count</code>: size of the data to read.</li>
+<li>return: the size of actual bytes read.</li>
+</ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<pre><code>    # dev = VsiDevice
+    buf_out = vsi_runtime.Buffer(256)
+    dev.read(buf_out)
+</code></pre></div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="int-pwriteconst-void-buff-sizet-count-int-offset"><code>int pwrite(const void *buff, size_t count, int offset)</code>:</h4>
+<h6 id="parameters">Parameters</h6>
+<ul>
+<li><code>buff</code>: Raw buffer containing the data to write.</li>
+<li><code>count</code>: Size of bytes to write. Should be equal to or smaller than the buff size.</li>
+<li><code>offset</code>: Specify the offset to write.</li>
+<li>return: the size of actual bytes written.</li>
+</ul>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<pre><code>    # dev = VsiDevice
+    OFFSET = 0
+    buf_in = vsi_runtime.Buffer(256)
+    buf_in.fill(&quot;abcd0123&quot;)
+    dev.pwrite(buf_in, OFFSET)
+</code></pre></div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="int-preadvoid-buff-sizet-count-int-offset"><code>int pread(void *buff, size_t count, int offset)</code>:</h4>
+<h6 id="parameters">Parameters</h6>
+<pre><code>- `buff`: Target raw buffer.
+- `count`: size of the data to read.
+- `offset`: Specify the offset to read.
+- return: the size of actual bytes read.
+</code></pre></div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<pre><code>    # dev = VsiDevice
+    OFFSET = 0
+    buf_out = vsi_runtime.Buffer(256)
+    dev.pread(buf_out, OFFSET)
+</code></pre></div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="int-pollint-timeout"><code>int poll(int timeout)</code></h4>
+<p>Blocks until an interrupt or till timeout expires.</p>
+<h6 id="parameters">Parameters</h6>
+<pre><code>- `timeout`: Timeout to wait for an interrupt.
+</code></pre></div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<pre><code>    # dev = VsiDevice
+    dev.poll()
+</code></pre></div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="int-devicefd"><code>int device_fd()</code></h4>
+<p>Returns the underlying operating system device descriptor.</p>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<pre><code>    # dev = VsiDevice
+    FD = dev.device_fd()
+</code></pre></div></div></div>
+
+<div class="api-method"><div class="api-method-definition"><h4 id="language-specific-notes-and-code-snippets">Language Specific notes and code snippets</h4>
+</div><div class="api-method-code"><div class="api-method-sample" data-lang="C/C++" data-name="C/C++"><h5 id="cc">C/C++</h5>
+</div><div class="api-method-sample" data-lang="Python" data-name="PYTHON"><h5 id="python">Python</h5>
+<p>Since python has no <code>void*</code> type, in order to use read, write, pread and pwrite from Python, the pointer and size needs to be wrapped into a VsiDevice type.</p>
+<p>A typical example of it is as following:</p>
+<pre><code>def process_device(dev):
+    global COUNT, OFFSET
+    COUNT += 1
+    buf_in = vsi_runtime.Buffer(256)
+    buf_out = vsi_runtime.Buffer(256)
+    buf_in.fill(&quot;abcd0123&quot;)
+    dev.pwrite(buf_in, OFFSET)
+    dev.pread(buf_out, OFFSET)
+    if  (COUNT % 20) == 0:
+        print &apos;Matched:{}, COUNT:{}, OFFSET:{}&apos;.format(buf_in.compare(buf_out), COUNT, OFFSET)
+    OFFSET += 1
+</code></pre><p>When reading from a file, the alternative method of Buffer can be used to reuse the same memory:</p>
+<pre><code>def process_device_file(dev):
+    global COUNT, OFFSET, file_name
+    create_file(file_name)
+    buf_in = vsi_runtime.Buffer(256)
+    buf_out = vsi_runtime.Buffer(256)
+    file_size = os.stat(file_name).st_size
+    f = open(file_name, &quot;rb&quot;)
+    try:
+        buf_in.set(f.read(256))
+        while file_size &gt; (256 * COUNT):
+            dev.pwrite(buf_in, OFFSET)
+            dev.pread(buf_out, OFFSET)
+            # if  (COUNT % 10) == 0:
+            print &apos;Matched:{}, COUNT:{}, OFFSET:{}&apos;.format(buf_in.compare(buf_out), COUNT, OFFSET)
+            OFFSET += 1
+            COUNT += 1
+            buf_in.set(f.read(256))
+    finally:
+        f.close()
+</code></pre></div></div></div>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"vsi::device","level":"1.7.2.12","depth":3,"next":{"title":"Logging","level":"1.7.3","depth":2,"path":"usage/logging.md","ref":"usage/logging.md","articles":[]},"previous":{"title":"hls::stream","level":"1.7.2.11","depth":3,"path":"runtime/hlsstream.md","ref":"runtime/hlsstream.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon","block-align","theme-api"],"styles":{"website":"style.css"},"pluginsConfig":{"block-align":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"theme-api":{"languages":[],"split":true,"theme":"light"},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/master/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2"},{"value":"/2017.3","text":"2017.3"},{"value":"/2017.4","text":"2017.4","selected":true}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"runtime/vsi_device.md","mtime":"2017-12-15T22:10:50.379Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-11T23:06:59.876Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
+        
+    
+
+    </body>
+</html>
+
