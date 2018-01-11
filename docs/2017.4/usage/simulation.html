@@ -1,0 +1,967 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Simulation · Documentation | Visual System Integrator</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-block-align/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-api/theme-api.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../style.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="systeminterface.html" />
+    
+    
+    <link rel="prev" href="vc709_packet.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../installation/readme.md">
+            
+                <span>
+            
+                    
+                    Installation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../installation/linux.html">
+            
+                <a href="../installation/linux.html">
+            
+                    
+                    Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../installation/windows.html">
+            
+                <a href="../installation/windows.html">
+            
+                    
+                    Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../installation/docker.html">
+            
+                <a href="../installation/docker.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../installation/aws.html">
+            
+                <a href="../installation/aws.html">
+            
+                    
+                    AWS F1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../license.html">
+            
+                <a href="../license.html">
+            
+                    
+                    Licensing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="readme.html">
+            
+                <a href="readme.html">
+            
+                    
+                    Guides
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="getting_started.html">
+            
+                <a href="getting_started.html">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="user_guide.html">
+            
+                <a href="user_guide.html">
+            
+                    
+                    User Guide
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="zynq.html">
+            
+                <a href="zynq.html">
+            
+                    
+                    ZYNQ Tutorial
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="zynq.html">
+            
+                <a href="zynq.html">
+            
+                    
+                    Creating a Zynq Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="creating_the_sort_demo.html">
+            
+                <a href="creating_the_sort_demo.html">
+            
+                    
+                    Creating the Sort Demo
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="vc709.html">
+            
+                <a href="vc709.html">
+            
+                    
+                    VC709 Tutorial
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.4.1" data-path="vc709.html">
+            
+                <a href="vc709.html">
+            
+                    
+                    Creating a VC709 Platform for packet processing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.2" data-path="vc709_packet.html">
+            
+                <a href="vc709_packet.html">
+            
+                    
+                    Creating a Packet Processor
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.5" data-path="simulation.html">
+            
+                <a href="simulation.html">
+            
+                    
+                    Simulation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="systeminterface.html">
+            
+                <a href="systeminterface.html">
+            
+                    
+                    System Interface
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="python_java.html">
+            
+                <a href="python_java.html">
+            
+                    
+                    Python and Java
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="external_interface.html">
+            
+                <a href="external_interface.html">
+            
+                    
+                    Interfacing with External Systems
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.8.1" data-path="api.html">
+            
+                <a href="api.html">
+            
+                    
+                    Using API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8.2" data-path="tcp.html">
+            
+                <a href="tcp.html">
+            
+                    
+                    Using TCP Ports
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8.3" data-path="rest.html">
+            
+                <a href="rest.html">
+            
+                    
+                    Using RESTful Endpoints
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../features/readme.html">
+            
+                <a href="../features/readme.html">
+            
+                    
+                    Features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../troubleshooting/readme.html">
+            
+                <a href="../troubleshooting/readme.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../releases.html">
+            
+                <a href="../releases.html">
+            
+                    
+                    Releases
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../reference/readme.md">
+            
+                <span>
+            
+                    
+                    Reference
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../workflow.html">
+            
+                <a href="../workflow.html">
+            
+                    
+                    Development Workflow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../runtime/readme.html">
+            
+                <a href="../runtime/readme.html">
+            
+                    
+                    VSI Runtime
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="../runtime/runtime.html">
+            
+                <a href="../runtime/runtime.html">
+            
+                    
+                    Runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="../runtime/custom.html">
+            
+                <a href="../runtime/custom.html">
+            
+                    
+                    Custom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="../runtime/inout.html">
+            
+                <a href="../runtime/inout.html">
+            
+                    
+                    Inout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.4" data-path="../runtime/tcp_server.html">
+            
+                <a href="../runtime/tcp_server.html">
+            
+                    
+                    Tcp Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.5" data-path="../runtime/tcp_client.html">
+            
+                <a href="../runtime/tcp_client.html">
+            
+                    
+                    Tcp Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.6" data-path="../runtime/net.html">
+            
+                <a href="../runtime/net.html">
+            
+                    
+                    Net
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.7" data-path="../runtime/interconnect.html">
+            
+                <a href="../runtime/interconnect.html">
+            
+                    
+                    Interconnect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.8" data-path="../runtime/connect.html">
+            
+                <a href="../runtime/connect.html">
+            
+                    
+                    Connect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.9" data-path="../runtime/log.html">
+            
+                <a href="../runtime/log.html">
+            
+                    
+                    Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.10" data-path="../runtime/buffer.html">
+            
+                <a href="../runtime/buffer.html">
+            
+                    
+                    Buffer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.11" data-path="../runtime/hlsstream.html">
+            
+                <a href="../runtime/hlsstream.html">
+            
+                    
+                    hls::stream
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.12" data-path="../runtime/vsi_device.html">
+            
+                <a href="../runtime/vsi_device.html">
+            
+                    
+                    vsi::device
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="logging.html">
+            
+                <a href="logging.html">
+            
+                    
+                    Logging
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="commandline.html">
+            
+                <a href="commandline.html">
+            
+                    
+                    Command Line
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../advanced/readme.md">
+            
+                <span>
+            
+                    
+                    Advanced
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="../templates/">
+            
+                <a href="../templates/">
+            
+                    
+                    Templates
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Simulation</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="vsi-simulation">VSI Simulation</h1>
+<p>This section describes how to build simulation in Visual System Integrator. Current example reads file from the host machine handled by simulation system and writes back the result.</p>
+<h2 id="create-vsi-project">Create VSI project</h2>
+<p>From menu bar, select <strong><em>File -&gt; New project</em></strong></p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/01_NewProject.png"></p></div>
+
+<p>Specify Project name and location as shown in figure below.</p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/02_newprojectname.png"></p></div>
+
+<p>&quot;Default Part&quot; window: select &quot;Boards&quot;, ZedBoard and press Next -&gt; Finish.</p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/03_selectBoard.png"></p></div>
+
+<h2 id="create-platform">Create Platform</h2>
+<p><strong><em>menu bar -&gt; Flow -&gt; Create Plaform</em></strong>, press OK in the appeared window.</p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/04_CreatePlatform.png"></p></div>
+
+<p>Open Diagram that has been created at the previous step  with your platform (default name: platform_1).</p>
+<h3 id="software-context">Software Context</h3>
+<p><strong><em>menu bar -&gt; Flow -&gt; Create Context</em></strong> Select Type: Software, and setup name of new context, for example: soft_context</p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/05_SoftwareContextCreate.png"></p></div>
+
+<p>Double click on software context and add path to Xilinx header 
+Include Directory. In exempel it is:  /opt/Xilinx/Vivado_HLS/2017.1/include</p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/06_headerInclude.png"></p></div>
+
+<p>Open Software context (soft_context). Add &#x201C;VSI Driver Setup Wizard&#x201D; IP.</p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/07_adddriwer.png"></p></div>
+
+<p>Set Driver Type to SIMULATOR</p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/08_Driversettings.png"></p></div>
+
+<h3 id="hardware-context-simulation">Hardware Context (Simulation)</h3>
+<p><em>**menu bar -&gt; Flow -&gt; Create Context</em> Select Type: Hardware, and setup name of new context, for example: hardware_simulation</p>
+<p>In &#x201C;context parameters&#x201D; select the following parameters:
+Target platform: Simulator
+Simulator: Vivado Simulator</p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/09_HardwareContextSettings.png"></p></div>
+
+<p>Open Hardware context (hardware_simulation). Add &#x201C;VSI Xilinx AXI BFM&#x201D; IP, make next connections:
+gen_clk &lt;-&gt; m_axi_aclk,
+gen_reset &lt;-&gt; m_axi_aresetn</p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/10_hardwcontext.png"></p></div>
+
+<h3 id="contexts-cross-connection">Contexts cross connection</h3>
+<p>Open platform diagram to connect  &#x201C;VSI Driver Setup Wizard&#x201D; M_AXI and &#x201C;VSI Xilinx AXI BFM&#x201D; plat_axi ports.</p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/11_sw_hw_interconnect.png"></p></div>
+
+<p>Save all your changes.</p>
+<h2 id="create-system">Create System</h2>
+<p><strong><em>menu bar -&gt; Flow -&gt; Create System</em></strong>, press OK in the appeared window.</p>
+<p>Open system (default name system_1) and import platform: <strong><em>menu bar -&gt; Flow -&gt; Import Platform</em></strong></p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/12_Importsystem.png"></p></div>
+
+<p>Open Software Context (double click at the empty space in software context)</p>
+<p>Add &quot;VSI Software Import Wizard&quot; IP component.
+Open Re-customize IP window (double click) at the source directory, select path to vsi/staging/target/common/hls_examples/memory and press Refresh.
+Set the following parameters:</p>
+<ul>
+<li>Function : read_file_send</li>
+<li>Arg1 Direction : output</li>
+</ul>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/13_SoftWizard_readFile.png"></p></div>
+
+<p>Create VSI Software IP component with the following parameters:</p>
+<ul>
+<li>Function : recv_write_file</li>
+<li>Arg1 Direction : input</li>
+</ul>
+<p>Create VSI Software IP component with the following parameters:</p>
+<ul>
+<li>Function : process_data</li>
+<li>Arg1 (in_s) Direction : input</li>
+<li>Arg2 (out_s) Direction : output</li>
+</ul>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/14_SoftwareIP_process_data.png"></p></div>
+
+<p>Make connection between components: </p>
+<p>Read_file {out_s} &lt;-&gt;  {in_s} process  {out_s} &lt;-&gt;  {in_s} writefile</p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/15_connection.png"></p></div>
+
+<p>Save your changes.</p>
+<p>From system diagram drag and drop process ip block to the simulation context space.</p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/16_proc2hw.png"></p></div>
+
+<p>Now process is located at the hardware simulation context.</p>
+<p>System generation </p>
+<ul>
+<li>Compile platform : <strong><em>menu bar -&gt; Flow -&gt; Compile Platform</em></strong></li>
+<li>Generate system : <strong><em>menu bar -&gt; Flow -&gt; Import Platform</em></strong></li>
+<li>Build HLS system : <strong><em>menu bar -&gt; Flow -&gt; Build HLS</em></strong></li>
+<li>Build Software : <strong><em>menu bar -&gt; Flow -&gt; Build HLS</em></strong></li>
+</ul>
+<h2 id="run-simulation">Run Simulation</h2>
+<p>Open Xilinx Vivado and execute script <project_location>/vsi_auto_gen/hw/hardware_simulation_platform.tcl that will generate Vivado project.</project_location></p>
+<p>Go to <project_location>/vsi_auto_gen/sw/system_1/build/soft_context</project_location></p>
+<p>Generate test file</p>
+<pre><code>dd if=/dev/random of=infile.txt bs=1 count=64
+</code></pre><p>Launch simulation from Vivado.
+<strong><em>menu bar -&gt; Flow -&gt; Run Simulation -&gt; Run Behavioral Simulation</em></strong></p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/17_Vivado_runSimulation.png"></p></div>
+
+<p>Run simulation
+<strong><em>menu bar -&gt; Run -&gt; Run All</em></strong></p>
+<div class="ba-center"><p><img alt="alt text" src="../img/simulation/18_Vivado_runAll.png"></p></div>
+
+<p>Start program from the command line</p>
+<p>Go to project_location/vsi_auto_gen/sw/system_1/build/soft_context and run the program:
+<code>./bin/soft_context</code>
+In this example input file (infile.txt) has to be located in the directory where generic program is executed.  </p>
+<p>Break simulation</p>
+<p><strong><em>menu bar -&gt; Run -&gt; Break</em></strong></p>
+<p>Output.txt file (similar to input.txt) is created as a result of the simulation.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Simulation","level":"1.3.5","depth":2,"next":{"title":"System Interface","level":"1.3.6","depth":2,"path":"usage/systeminterface.md","ref":"usage/systeminterface.md","articles":[]},"previous":{"title":"Creating a Packet Processor","level":"1.3.4.2","depth":3,"path":"usage/vc709_packet.md","ref":"usage/vc709_packet.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon","block-align","theme-api"],"styles":{"website":"style.css"},"pluginsConfig":{"block-align":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"theme-api":{"languages":[],"split":true,"theme":"light"},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/master/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2"},{"value":"/2017.3","text":"2017.3"},{"value":"/2017.4","text":"2017.4","selected":true}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"usage/simulation.md","mtime":"2017-12-15T22:11:18.235Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-11T22:47:52.807Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
+        
+    
+
+    </body>
+</html>
+
