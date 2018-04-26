@@ -25,9 +25,9 @@ Coming soon
 3. Optional: if you have already received your license, copy it to $VSI_INSTALL directory.
 3. Open a terminal and issue the command `vsi`. If the installation was successful then you should see text similar to this:
 	- ` Visual System Integrator version: V2017.1_HEAD-29-gdc85abc, Compiler: "GNU - 5.4.0 20160609", Buildhost: "nanl - Linux-4.4.0-72-generic", Date: 2017-04-07T17:24:29`<br/>`loading Visual System Integrator...`
-4. If you don't see similar text then see [Troubleshooting](/troubleshooting)
+4. If you don't see similar text then see [Troubleshooting](/troubleshooting/)
 
 
 ##### Footnotes
 1. typically a modern linux distribution released within the last 5 years should work; We recommend Ubuntu 14.04 LTS or newer (or Other Ubuntu derivatives Xubuntu, Kubuntu,...)
-1. Certain VSI features are only available on newer releases. For a feature comparison matrix, [look here](/features)
+1. Certain VSI features are only available on newer releases. For a feature comparison matrix, [look here](/features/)
