@@ -13,3 +13,5 @@ In addition any C/C++, Java or Python code can be effortlessly imported as a So
 Because no system works perfectly the first time, VSI have integrated support for Simulators and Emulators. A component can be dragged inside a Simulator/Emulator, leaving the rest of the system as it is, enabling rapid debugging and tracing.
 
 Visual System Integrator is blurring the line between prototyping in high level languages such as Python and months of effort porting the prototyping into the actual code for the end product. With VSI, the effort spent on prototyping is directly reduced from the end product development. It enables you to spend less time in repetitive tasks such as porting and test-benches and more time developing features and increasing robustness of your product.
+
+

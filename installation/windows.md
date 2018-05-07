@@ -16,7 +16,7 @@ This document explains how to install Visual System Integrator on a Windows 10 x
 Coming Soon
 
 #### Manual Steps
-1. Download the installation file from [Here](/releases) (Make sure to choose the major version that corresponds to the Vivado version that is installed on the host)<sup>4</sup>
+1. Download the installation file from [Here](/releases.md) (Make sure to choose the major version that corresponds to the Vivado version that is installed on the host)<sup>4</sup>
 1. Extract the compressed file in a directory of your choice (example: C:\\Systemview\\VSI).
 2. set environment variable `VSI_INSTALL` which should point to the directory where you extracted the file
 	- command prompt: `setx VSI_INSTALL C:/Systemview/VSI` (to make the change permanent, add it to system->advanced->environment variables)
