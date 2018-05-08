@@ -4,11 +4,12 @@ This Quick Start will describe how to create a simple system using Visual System
 
 
 #### 1- Start the VSI software
+To start the tool just type:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1- >${VSI_INSTALL}/host/<HOST_TYPE>/bin/vsi
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.2- ${VSI_INSTALL} – path to VSI installation
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${VSI_INSTALL} – path to VSI installation
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.3- HOST_TYPE – linux.x86_64 | windows.x86_64
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HOST_TYPE – linux.x86_64 | windows.x86_64
 
 
 #### 2- Import Existing platform
@@ -32,7 +33,7 @@ In this guide we will import an existing platform.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2- Clicking  Flow --> Import Platform… to import the platform definition.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; After importing, the execution contexts show up as blank entities.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; After importing the platform, the execution contexts show up as blank entities.
 
 
 #### 4- Develop Application
