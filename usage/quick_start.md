@@ -5,6 +5,7 @@ This Quick Start will describe how to create a simple system using Visual System
 
 #### 1- Start the VSI software
 To start the tool just type:
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1- >${VSI_INSTALL}/host/<HOST_TYPE>/bin/vsi
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${VSI_INSTALL} – path to VSI installation
