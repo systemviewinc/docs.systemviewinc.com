@@ -56,6 +56,8 @@ We will use the [“Software Import Wizard”](/usage/user_guide.md) to import a
 2. Build the High-Level Synthesis blocks by clicking on ***Flow > Build HLS***
 3. Build the executables for Software Contexts by clicking on ***Flow > Build Software Contexts*** .
 4. Building the Hardware Project by clicking on ***Flow > Build Hardware***.  
+	- VSI supports [remote hardware build](/usage/launching_hardware_builds_on_remote_hosts.md). 
+
 This completes the build process for the example project.
 
 #### Execute Application

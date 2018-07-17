@@ -18,6 +18,7 @@
     * [Device Driver](usage/device_driver.md)
     * [VSI Common Interface](usage/VSI_common_interface.md)
     * [Moving Blocks between Contexts](usage/moving_blocks_between_contexts.md)
+    * [Remote Hardware Build](usage/launching_hardware_builds_on_remote_hosts.md)
     * [Setting up Trace](usage/setting_up_trace.md)
   * [User Guide](usage/user_guide.md)
   * [ZYNQ Tutorial](usage/zynq.md)

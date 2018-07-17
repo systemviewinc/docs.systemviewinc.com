@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Using API · Documentation | Visual System Integrator</title>
+        <title>Remote Hardware Build · Documentation | Visual System Integrator</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="tcp.html" />
+    <link rel="next" href="setting_up_trace.html" />
     
     
-    <link rel="prev" href="external_interface.html" />
+    <link rel="prev" href="moving_blocks_between_contexts.html" />
     
 
     </head>
@@ -335,7 +335,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3.8" data-path="launching_hardware_builds_on_remote_hosts.html">
+        <li class="chapter active" data-level="1.3.3.8" data-path="launching_hardware_builds_on_remote_hosts.html">
             
                 <a href="launching_hardware_builds_on_remote_hosts.html">
             
@@ -522,7 +522,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.3.10.1" data-path="api.html">
+        <li class="chapter " data-level="1.3.10.1" data-path="api.html">
             
                 <a href="api.html">
             
@@ -905,7 +905,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Using API</a>
+        <a href=".." >Remote Hardware Build</a>
     </h1>
 </div>
 
@@ -920,40 +920,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="api">API</h3>
-<p>This provides the lowest level access to an interface marked as external. Each of the external interface is exported as a raw stream_buffer and can be written to from a C/C++ Api. In order to use it, the context has to be generated as a shared library. The resulting shared library can be loaded by an external system using <code>[dlopen](http://man7.org/linux/man-pages/man3/dlopen.3.html)</code> explicitly or linked against using the <code>api.h</code> file that is generated in the public folder.</p>
-<h4 id="walkthrough">Walkthrough</h4>
+                                <h2 id="remote-hardware-build">Remote Hardware Build</h2>
+<h4 id="launching-hardware-builds-on-remote-linux-hosts">Launching Hardware Builds on Remote Linux Hosts</h4>
+<p>VSI supports simultaneous remote hardware builds on multiple Linux hosts.</p>
+<h4 id="prerequisites">Prerequisites</h4>
+<p><strong>On the remote host:</strong></p>
 <ul>
-<li>For the purpose of demonstration in this walkthrough, we will use a simple function included in vsi_examples repository. Using git, clone the vsi_examples repository: <code>https://github.com/systemviewinc/vsi-examples.git</code>.</li>
-<li>Create a new project and work through the wizard to the end. Select any part/board as it won&apos;t matter since we&apos;re only going to be using the software for the walkthrough.</li>
-<li>Click <code>menu-&gt;flow-&gt;Create Platform</code>. Accept the prefilled default options and Press okay.</li>
-<li>Click <code>menu-&gt;flow-&gt;Create Context</code>. Change the dropdown to <code>Software</code> and enter name as <code>api_walkthrough</code>. Press okay.</li>
-<li>Open Context block properties by double clicking inside <code>api_walkthrough</code> and scroll down to <code>Software Parameters-&gt;map exposed interfaces as</code>. Make sure that <code>Api</code> is selected.</li>
-<li>Scroll down to <code>C/C++ options</code> and ensure that <code>-static</code> flag is NOT included in <code>C</code> or <code>C++</code> compile options. Remove it if you see it included.</li>
-<li>Open the <code>Builds</code> dropdown and select Shared Library.</li>
-<li>Press okay to close the properties dialog.</li>
-<li>Select <code>menu-&gt;Flow-&gt;Compile Platform</code>.</li>
-<li>Then create a system canvas by selecting <code>flow-&gt;create system</code>. Accept the prefilled defaults.</li>
-<li>Open the newly created system canvas and select <code>menu-&gt;Flow-&gt;Import Platform</code></li>
-<li>Double click the <code>api_walkthrough</code> context to enter hierarchy.</li>
-<li>Add a new <code>VSI Software Wizard</code> block by right clicking and selecting <code>VSI Software Wizard</code>.</li>
-<li>Open newly added block properties by double-clicking it.</li>
-<li>Click browse beside <code>Source Directory</code> and browse to select source code directory <code>&lt;vsi_examples&gt;/example_1</code>.</li>
-<li>The <code>C/C++ Function</code> dropdown box should be populated with multiple entries. Open and select <code>process_tcp1</code>.</li>
-<li>Enable <code>Execution Trigger</code> for <code>Arg 1</code> in Arguments section.</li>
-<li>Change the direction of <code>Arg 2</code> in Arguments section to <code>output</code>. Press okay to close properties.</li>
-<li>Right click each interface and select <code>Mark External</code>.</li>
-<li>Select <code>flow-&gt;Generate System</code>.</li>
-<li>Select <code>flow-&gt;Build Software Contexts</code> and then Select <code>Build</code>.</li>
-<li>Wait for the build to successfully complete.</li>
-<li>Browse to the directory <code>&lt;project_dir&gt;/vsi_auto_gen/sw/system_1</code> in a terminal.</li>
-<li>VSI automatically generate an example executable to demonstrate the api usage. Run the example by using the following command <code>./build/api_walkthrough/bin/api_walkthrough_example</code></li>
-<li>The example will write to each input interface marked external and then read from each output marked external A statement on console is printed for each read and write.</li>
+<li>VSI installation is assumed to be available from the login shell</li>
+<li>The mailutils package needs to be installed to enable sending email after each job is done.</li>
 </ul>
-<h2 id="exercise">Exercise</h2>
+<p><strong>On the local host:</strong></p>
 <ul>
-<li>Analyze the example code for API walkthrough in <code>&lt;project_dir&gt;/vsi_auto_gen/sw/system_1/api_walkthrough/example</code>. Modify it to read data from a file instead of a variable and write to the input interface.</li>
+<li>Configure SSH so that the host does not require a password each time you launch a remote run.  <ul>
+<li>Copy the public key to remote-host using:  <code>ssh-copy-id -i ~/.ssh/id_rsa.pub &lt;remote-host_name&gt;</code></li>
 </ul>
+</li>
+<li>Install expect<ul>
+<li>On Ubuntu <code>apt install expect</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="launch-build">Launch Build</h4>
+<p>To launch a build, simply add the hostname and the email address to the vsi_build_hardware command as follow:
+<code>vsi_build_hardware {&lt;system_name&gt;} {&lt;remote_host_name&gt;} {&lt;user@example.com&gt;}</code></p>
+<p>When the remote build is completed or failed, an email will be sent to the email address. 
+If the build was successful, the email contains the location of the bitstream at the remote host.</p>
 
                                 
                                 </section>
@@ -987,7 +978,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Using API","level":"1.3.10.1","depth":3,"next":{"title":"Using TCP Ports","level":"1.3.10.2","depth":3,"path":"usage/tcp.md","ref":"usage/tcp.md","articles":[]},"previous":{"title":"Interfacing with External Systems","level":"1.3.10","depth":2,"path":"usage/external_interface.md","ref":"usage/external_interface.md","articles":[{"title":"Using API","level":"1.3.10.1","depth":3,"path":"usage/api.md","ref":"usage/api.md","articles":[]},{"title":"Using TCP Ports","level":"1.3.10.2","depth":3,"path":"usage/tcp.md","ref":"usage/tcp.md","articles":[]},{"title":"Using RESTful Endpoints","level":"1.3.10.3","depth":3,"path":"usage/rest.md","ref":"usage/rest.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon","block-align","theme-api"],"styles":{"website":"style.css"},"pluginsConfig":{"block-align":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"theme-api":{"languages":[],"split":true,"theme":"light"},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/master/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2"},{"value":"/2017.3","text":"2017.3"},{"value":"/2017.4","text":"2017.4","selected":true}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"usage/api.md","mtime":"2018-07-12T22:29:14.832Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-17T02:04:02.988Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Remote Hardware Build","level":"1.3.3.8","depth":3,"next":{"title":"Setting up Trace","level":"1.3.3.9","depth":3,"path":"usage/setting_up_trace.md","ref":"usage/setting_up_trace.md","articles":[]},"previous":{"title":"Moving Blocks between Contexts","level":"1.3.3.7","depth":3,"path":"usage/moving_blocks_between_contexts.md","ref":"usage/moving_blocks_between_contexts.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions","bring-yer-favicon","block-align","theme-api"],"styles":{"website":"style.css"},"pluginsConfig":{"block-align":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"bring-yer-favicon":{"favicons":{"favicon.ico":"assets/favicons/favicon.ico","apple-touch-icon-precomposed-152.png":"assets/favicons/apple-touch-icon-precomposed-152.png"}},"highlight":{},"theme-api":{"languages":[],"split":true,"theme":"light"},"ga":{"configuration":"auto","token":"UA-90334039-2"},"versions":{"type":"branches","gitbookConfigURL":"https://raw.githubusercontent.com/systemviewinc/docs.systemviewinc.com/master/book.json","options":[{"value":"/2017.1","text":"2017.1"},{"value":"/2017.2","text":"2017.2"},{"value":"/2017.3","text":"2017.3"},{"value":"/2017.4","text":"2017.4","selected":true}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Documentation | Visual System Integrator","gitbook":"*"},"file":{"path":"usage/launching_hardware_builds_on_remote_hosts.md","mtime":"2018-07-17T01:23:59.998Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-17T02:04:02.988Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
