@@ -22,6 +22,6 @@ To launch a build, simply add the hostname and the email address to the vsi_buil
 ``` vsi_build_hardware {<system_name>} {<remote_host_name>} {<user@example.com>} ```
 				
 When the remote build is completed or failed, an email will be sent to the email address. 
-If the build was successful, the email contains the location of the bitstream at the remote host.
+If the build was successful, the email contains the bitstream file and the location of it at the remote host.
 			
 
