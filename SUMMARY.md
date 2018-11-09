@@ -21,6 +21,7 @@
     * [Remote Hardware Build](usage/launching_hardware_builds_on_remote_hosts.md)
     * [Setting up Trace](usage/setting_up_trace.md)
   * [User Guide](usage/user_guide.md)
+  * [Device Tree](usage/device_tree.md)
   * [ZYNQ Tutorial](usage/zynq.md)
     * [Creating a Zynq Platform](usage/zynq.md)
     * [Creating the Sort Demo](usage/creating_the_sort_demo.md)
